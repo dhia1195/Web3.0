@@ -1,0 +1,18 @@
+PREFIX myOnto: <http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+DELETE {
+  ?platform myOnto:nomPlateform ?oldName .
+  ?platform myOnto:typeAbonnement ?oldSubscriptionType .
+}
+INSERT {
+  ?platform myOnto:nomPlateform ?newName .
+  ?platform myOnto:typeAbonnement ?newSubscriptionType .
+}
+WHERE {
+  BIND(<http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Plateforme_SOME_UNIQUE_ID> AS ?platform)
+  ?platform myOnto:nomPlateform ?oldName .
+  ?platform myOnto:typeAbonnement ?oldSubscriptionType .
+  BIND("New Platform Name" AS ?newName)  # Replace with the actual new name
+  BIND("New Subscription Type" AS ?newSubscriptionType)  # Replace with the actual new subscription type
+}

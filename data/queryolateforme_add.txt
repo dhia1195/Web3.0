@@ -1,0 +1,13 @@
+PREFIX myOnto: <http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+INSERT {
+  ?platform rdf:type myOnto:plateforme .
+  ?platform myOnto:nomPlateform ?name .
+  ?platform myOnto:typeAbonnement ?subscriptionType .
+}
+WHERE {
+  BIND(IRI(CONCAT("http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Plateforme_", STRUUID())) AS ?platform)
+  BIND(?name AS ?name)
+  BIND(?subscriptionType AS ?subscriptionType)
+}
