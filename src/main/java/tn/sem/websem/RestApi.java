@@ -251,6 +251,7 @@ public class RestApi {
     }
 
     @GetMapping("/getAllTechnologies")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<List<Technologie_EducativeDto>> getAllTechnologies() {
         List<Technologie_EducativeDto> technologies = new ArrayList<>();
 
@@ -293,6 +294,7 @@ public class RestApi {
     }
 
     @PostMapping("/addTechnologieEduc")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<String> addTechnologieEduc(@RequestBody Technologie_EducativeDto technologieDto) {
         if (model != null) {
             try {
@@ -320,6 +322,35 @@ public class RestApi {
             return new ResponseEntity<>("Error when reading model from ontology", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    @DeleteMapping("/deleteAllTechnologies")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public ResponseEntity<String> deleteAllTechnologies() {
+        if (model != null) {
+            try {
+                // SPARQL query to delete all technologies
+                String deleteQuery =
+                        "PREFIX rescue: <http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#> " +
+                                "DELETE WHERE { " +
+                                "  ?tech a rescue:Technologie_Educative . " +
+                                "}";
+
+                // Execute the delete query
+                UpdateRequest updateRequest = UpdateFactory.create(deleteQuery);
+                UpdateAction.execute(updateRequest, model);
+
+                // Save the updated model to the ontology
+                JenaEngine.saveModel(model, "data/education.owl");
+
+                return new ResponseEntity<>("All technologies have been deleted successfully.", HttpStatus.OK);
+            } catch (Exception e) {
+                e.printStackTrace(); // Debugging
+                return new ResponseEntity<>("Error deleting all technologies: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        } else {
+            return new ResponseEntity<>("Error when reading model from ontology", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }
 
 
