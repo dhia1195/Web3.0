@@ -18,6 +18,7 @@ import { AppMenuComponent } from './menu/menu.component';
 import { AppTooltipsComponent } from './tooltips/tooltips.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { PlateformeComponent } from './plateforme/plateforme.component';
+import { TechnologieEducativeComponent } from './technologie-educative/technologie-educative.component';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { PlateformeComponent } from './plateforme/plateforme.component';
     AppListsComponent,
     AppMenuComponent,
     AppTooltipsComponent,
-    PlateformeComponent
+    PlateformeComponent,
+    TechnologieEducativeComponent
   ],
 })
 export class UicomponentsModule {}

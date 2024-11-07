@@ -18,6 +18,11 @@ export const navItems: NavItem[] = [
     route: '/ui-components/plateforme',
   },
   {
+    displayName: 'Technologies d` Education',
+    iconName: 'school',
+    route: '/ui-components/technologie',
+  },
+  {
     displayName: 'Badge',
     iconName: 'rosette',
     route: '/ui-components/badge',

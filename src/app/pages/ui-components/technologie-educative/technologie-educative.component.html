@@ -1,0 +1,52 @@
+<div class="plateforme-container">
+    <!-- Form for adding a new technology -->
+    <h2 class="section-title add-title">Add a New Technologie</h2>
+    <form #technologyForm="ngForm" (ngSubmit)="addTechnologie()">
+      <div class="form-group">
+        <label for="nom">Nom:</label>
+        <input
+          type="text"
+          id="nom"
+          name="nom"
+          ngModel
+          [(ngModel)]="newTechnology.nom"
+          required
+          class="form-control"
+          placeholder="Enter technology name"
+        />
+      </div>
+      <div class="form-group">
+        <label for="impactEnvironnemental">Impact Environnemental:</label>
+        <input
+          type="text"
+          id="impactEnvironnemental"
+          name="impactEnvironnemental"
+          ngModel
+          [(ngModel)]="newTechnology.impactEnvironnemental"
+          required
+          class="form-control"
+          placeholder="Enter environmental impact"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Add Technologie</button>
+    </form>
+  
+    <!-- Display list of technologies -->
+    <h2 class="section-title list-title">Technologies List</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Impact Environnemental</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let technologie of technologies">
+          <td>{{ technologie.nom }}</td>
+          <td>{{ technologie.impactEnvironnemental }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  
