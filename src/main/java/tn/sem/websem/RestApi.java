@@ -634,7 +634,7 @@ public class RestApi {
                 Dataset dataset = DatasetFactory.create(model);
                 UpdateProcessor processor = UpdateExecutionFactory.create(updateRequest, dataset);
                 processor.execute();
-                JenaEngine.saveModel(model, "data/hekkamel.owl");
+                JenaEngine.saveModel(model, "data/education.owl");
 
                 return new ResponseEntity<>("Personne added successfully", HttpStatus.OK);
             } catch (Exception e) {
@@ -678,7 +678,7 @@ public class RestApi {
                 JenaEngine.executeUpdate(sparqlUpdate, model);
 
                 // Save the updated model to a file to persist changes
-                JenaEngine.saveModel(model, "data/hekkamel.owl");
+                JenaEngine.saveModel(model, "data/education.owl");
 
                 return new ResponseEntity<>("Personne updated successfully", HttpStatus.OK);
             } catch (Exception e) {
@@ -715,7 +715,7 @@ public class RestApi {
                 JenaEngine.executeUpdate(sparqlDelete, model);
 
                 // Save the updated model to a file to persist changes
-                JenaEngine.saveModel(model, "data/hekkamel.owl");
+                JenaEngine.saveModel(model, "data/education.owl");
 
                 return new ResponseEntity<>("Personne deleted successfully", HttpStatus.OK);
             } catch (Exception e) {

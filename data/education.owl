@@ -465,9 +465,11 @@
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
     <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#activite_educative"/>
   </owl:DatatypeProperty>
+  <teams rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_008e0abc-6676-47c2-83ca-75ad8d507ff8"/>
   <Enseignement_différencié rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Enseignement_differencie">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   </Enseignement_différencié>
+  <git rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_77b85e85-c543-468b-bd87-ca97c20dbbbe"/>
   <parent rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_2">
     <est_parent_de>
       <etudiant rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_1">
@@ -576,6 +578,32 @@
     <impactEnvironnemental>dd</impactEnvironnemental>
     <nom>dd</nom>
   </Technologie_Educative>
+  <rdf:Description rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_4829f155-79c7-408a-84c7-21a4841e03f8">
+    <subscriptionType></subscriptionType>
+    <name></name>
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#"/>
+  </rdf:Description>
+  <moodle rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_f2f9124c-f9b7-4bde-8b69-96987699e15c">
+    <type>
+      <git rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#git">
+        <estSuperviséPar>
+          <administrateur rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_admin">
+            <crée rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Plateforme1"/>
+            <dateDeNaissance>15/05/1979</dateDeNaissance>
+            <age>45</age>
+            <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+          </administrateur>
+        </estSuperviséPar>
+        <objectif>integration
+</objectif>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#plateforme"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </git>
+    </type>
+    <subscriptionType>2ans</subscriptionType>
+    <name>moodle</name>
+  </moodle>
   <Technologie_Educative rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#technologie_educ1">
     <nom>Esprit_Plat</nom>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
@@ -633,6 +661,10 @@
     <subscriptionType>sss</subscriptionType>
   </Plateforme>
   <Plateforme rdf:about="file:///C:/Users/dhia-/Desktop/Semantic_Web_Project/WebSemantiqueBack/Plateforme_1bb0a961-7790-49d1-b3ab-6e6ce9080e1a"/>
+  <git rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_e4090e81-9faa-4b5a-9f65-310219561266">
+    <subscriptionType>2ans</subscriptionType>
+    <name>githubs</name>
+  </git>
   <rdf:Description rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Plateforme_1bb0a961-7790-49d1-b3ab-6e6ce9080e1a">
     <name>GitHub Updatedssssss</name>
     <subscriptionType>Git</subscriptionType>
@@ -649,9 +681,18 @@
   <jeu_educaif rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#jeu_educatif">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   </jeu_educaif>
+  <classroom rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_ce3ae4e6-776b-4117-aaa0-23cee22f4a6e"/>
   <Classe_inversee rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#classe_inverse">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   </Classe_inversee>
+  <Methode rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Methode_53ef98d6-a618-4d18-a5e3-497a1ad3ffc4">
+    <nom>dd</nom>
+    <duree>ddd</duree>
+  </Methode>
+  <classroom rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_53ee1d8e-60e9-4f97-989b-cb5d7c3428d1">
+    <subscriptionType>1ans</subscriptionType>
+    <name>moodles</name>
+  </classroom>
   <parent rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_11">
     <est_parent_de rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_10"/>
     <nom>touhemi</nom>
@@ -666,6 +707,18 @@
     <credits>8</credits>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   </projet>
+  <git rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_c3201f8a-9d7e-496f-899d-08a14a5c933c"/>
+  <rdf:Description rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Plateforme_f2f9124c-f9b7-4bde-8b69-96987699e15c">
+    <name>moodle</name>
+    <subscriptionType>2ans</subscriptionType>
+    <type>
+      <teams rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#teams">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#plateforme"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </teams>
+    </type>
+  </rdf:Description>
   <Plateforme rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Plateforme_0adca02d-41f4-40db-9a8c-08d7b60d1c61">
     <name>sss</name>
     <subscriptionType>sss</subscriptionType>
@@ -674,6 +727,11 @@
     <name>github</name>
     <subscriptionType>git</subscriptionType>
   </Plateforme>
+  <teams rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_09f3d173-03b9-435b-9018-e2ef798da9d3">
+    <subscriptionType>1ans</subscriptionType>
+    <name>teams</name>
+  </teams>
+  <moodle rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_70b70fa7-5d3b-4cd8-8d2f-835381de2bc2"/>
   <presentiel rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#presentiel">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Pedagogie"/>
@@ -684,6 +742,18 @@
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Niveau_d&apos;education"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </superieur>
+  <classroom rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#classroom">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#plateforme"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </classroom>
+  <moodle rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#moodle">
+    <estSuperviséPar rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_admin"/>
+    <objectif>ajouter des cours</objectif>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#plateforme"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </moodle>
   <enseignant rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_8">
     <enseigne>
       <presentiel rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Web_Semantique">
@@ -702,16 +772,6 @@
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Niveau_d&apos;education"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </primaire>
-  <classroom rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#classroom">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#plateforme"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </classroom>
-  <teams rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#teams">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#plateforme"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </teams>
   <en_ligne rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#en_ligne">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Pedagogie"/>
@@ -722,28 +782,6 @@
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Technologie_Educative"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </tableau_interactif>
-  <moodle rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#moodle">
-    <estSuperviséPar>
-      <administrateur rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_admin">
-        <crée rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Plateforme1"/>
-        <dateDeNaissance>15/05/1979</dateDeNaissance>
-        <age>45</age>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-      </administrateur>
-    </estSuperviséPar>
-    <objectif>ajouter des cours</objectif>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#plateforme"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </moodle>
-  <git rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#git">
-    <estSuperviséPar rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_admin"/>
-    <objectif>integration
-</objectif>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#plateforme"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </git>
   <secondaire rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#secondaire">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Niveau_d&apos;education"/>
