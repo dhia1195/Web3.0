@@ -73,11 +73,12 @@ public class RestApi {
                 String queryStr =
                         "PREFIX rescue: <http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#> " +
                                 "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
-                                "SELECT ?id ?name ?subscriptionType WHERE { " +
-                                "  ?plateforme rdf:type rescue:Plateforme . " +
+                                "SELECT ?id ?name ?subscriptionType ?type WHERE { " +
+                                "  ?plateforme rdf:type ?type . " +
                                 "  ?plateforme rescue:name ?name . " +
                                 "  ?plateforme rescue:subscriptionType ?subscriptionType . " +
-                                "  BIND(STR(?plateforme) AS ?id) . " + // Include the ID (URI) as ?id
+                                "  BIND(STR(?plateforme) AS ?id) . " +
+                                "  FILTER (?type IN (rescue:teams, rescue:classroom, rescue:moodle, rescue:git)) " +
                                 "}";
 
                 Query query = QueryFactory.create(queryStr);
@@ -95,21 +96,23 @@ public class RestApi {
     }
 
 
+
     @PostMapping("/addPlateforme")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<String> addPlateforme(@RequestBody PlateformeDto plateformeDto) {
         if (model != null) {
             try {
                 String plateformeId = "Plateforme_" + UUID.randomUUID().toString();
+                String plateformeType = plateformeDto.getType(); // Assume the type is sent in the request
 
                 String insertQuery =
                         "PREFIX rescue: <http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#> " +
                                 "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
                                 "INSERT { " +
-                                "  <" + plateformeId + "> rdf:type rescue:Plateforme . " +
+                                "  <" + plateformeId + "> rdf:type rescue:" + plateformeType + " . " + // Use the dynamic type
                                 "  <" + plateformeId + "> rescue:name \"" + plateformeDto.getName() + "\" . " +
                                 "  <" + plateformeId + "> rescue:subscriptionType \"" + plateformeDto.getSubscriptionType() + "\" . " +
-                                "} WHERE { }"; // No need for a WHERE clause since we are inserting a new resource
+                                "} WHERE { }";
 
                 UpdateRequest updateRequest = UpdateFactory.create(insertQuery);
                 UpdateAction.execute(updateRequest, model);
@@ -124,6 +127,7 @@ public class RestApi {
             return new ResponseEntity<>("Error when reading model from ontology", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     @PutMapping("/modifyPlateforme/{id}")
     @CrossOrigin(origins = "http://localhost:4200", methods = {RequestMethod.PUT, RequestMethod.OPTIONS})
     public ResponseEntity<String> modifyPlateforme(@PathVariable String id, @RequestBody PlateformeDto plateformeDto) {
@@ -135,21 +139,25 @@ public class RestApi {
                     return new ResponseEntity<>("Plateforme not found", HttpStatus.NOT_FOUND);
                 }
 
+                // Modify the SPARQL update query to include the 'type' field
                 String modifyQuery =
                         "PREFIX rescue: <http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#> " +
                                 "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
                                 "DELETE { " +
                                 "  ?plateforme rescue:name ?oldName . " +
                                 "  ?plateforme rescue:subscriptionType ?oldSubscriptionType . " +
+                                "  ?plateforme rescue:type ?oldType . " +  // Delete the old type
                                 "} " +
                                 "INSERT { " +
                                 "  ?plateforme rescue:name \"" + escapeSpecialCharacters(plateformeDto.getName()) + "\" . " +
                                 "  ?plateforme rescue:subscriptionType \"" + escapeSpecialCharacters(plateformeDto.getSubscriptionType()) + "\" . " +
+                                "  ?plateforme rescue:type <" + escapeSpecialCharacters(plateformeDto.getType()) + "> . " + // Insert the new type URI
                                 "} " +
                                 "WHERE { " +
-                                "  BIND(<" + id + "> AS ?plateforme) ." + // Ensure the id is correctly formatted in the URI
+                                "  BIND(<" + id + "> AS ?plateforme) ." +
                                 "  OPTIONAL { ?plateforme rescue:name ?oldName } ." +
                                 "  OPTIONAL { ?plateforme rescue:subscriptionType ?oldSubscriptionType } ." +
+                                "  OPTIONAL { ?plateforme rescue:type ?oldType } ." +
                                 "}";
 
 
@@ -168,11 +176,13 @@ public class RestApi {
             return new ResponseEntity<>("Error when reading model from ontology", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     private String escapeSpecialCharacters(String input) {
         if (input == null) return "";
         return input.replace("\"", "\\\"")
                 .replace("\\", "\\\\");
     }
+
     @DeleteMapping("/delete/{id}")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<String> deletePlateforme(@PathVariable String id) {

@@ -9,4 +9,6 @@ import lombok.NoArgsConstructor;
 public class PlateformeDto {
     private String name;
     private String subscriptionType;
+    private String type;  // Add this field
+
 }
