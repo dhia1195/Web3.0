@@ -13,6 +13,11 @@ export const navItems: NavItem[] = [
     navCap: 'Ui Components',
   },
   {
+    displayName: 'Plateforme',
+    iconName: 'globe',
+    route: '/ui-components/plateforme',
+  },
+  {
     displayName: 'Badge',
     iconName: 'rosette',
     route: '/ui-components/badge',

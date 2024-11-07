@@ -1,0 +1,269 @@
+<div class="plateforme-container">
+    <!-- Form for adding a new plateforme -->
+    <h2 class="section-title add-title">Add a New Plateforme</h2>
+    <form #plateformeForm="ngForm" (ngSubmit)="addPlateforme(plateformeForm)">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" ngModel required class="form-control" placeholder="Enter plateforme name" />
+      </div>
+      <div class="form-group">
+        <label for="subscriptionType">Subscription Type:</label>
+        <input type="text" id="subscriptionType" name="subscriptionType" ngModel required class="form-control" placeholder="Enter subscription type" />
+      </div>
+      <button type="submit" class="btn btn-primary">Add Plateforme</button>
+    </form>
+  
+    <!-- Display list of plateformes -->
+    <h2 class="section-title list-title">Plateformes List</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Subscription Type</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let plateforme of plateformes">
+          <td>{{ plateforme.name }}</td>
+          <td>{{ plateforme.subscriptionType }}</td>
+          <td>
+            <button class="btn btn-warning" (click)="modifyPlateforme(plateforme.id, plateforme)">Modify</button>
+            <button class="btn btn-danger" (click)="deletePlateforme(plateforme.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Modal for editing plateforme -->
+    <div *ngIf="isModalOpen" class="modal-overlay">
+      <div class="modal">
+        <h2 class="modal-title">Modify Plateforme</h2>
+        <form (ngSubmit)="updatePlateforme()">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" [(ngModel)]="selectedPlateforme.name" required class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="subscriptionType">Subscription Type:</label>
+            <input type="text" id="subscriptionType" name="subscriptionType" [(ngModel)]="selectedPlateforme.subscriptionType" required class="form-control" />
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Update Plateforme</button>
+            <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <style>
+    /* Main container */
+    .plateforme-container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 30px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+  
+    .plateforme-container:hover {
+      transform: scale(1.02);
+    }
+  
+    /* General style for section titles */
+    .section-title {
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+      font-size: 2rem; /* Increased font size */
+      margin-bottom: 25px; /* Increased space */
+      transition: all 0.3s ease;
+    }
+  
+    /* Specific styles for the 'Plateformes List' title */
+    .list-title {
+      color: #007bff;
+      text-transform: uppercase;
+      border-bottom: 2px solid #007bff;
+      padding-bottom: 8px;
+      animation: fadeIn 1s ease;
+    }
+  
+    /* Specific styles for the 'Add a New Plateforme' title */
+    .add-title {
+      color: #28a745;
+      text-transform: uppercase;
+      border-bottom: 2px solid #28a745;
+      padding-bottom: 8px;
+      animation: fadeIn 1s ease;
+    }
+  
+    /* Form group styling */
+    .form-group {
+      margin-bottom: 2rem; /* Increased margin */
+      transition: all 0.3s ease;
+    }
+  
+    /* Input fields styling */
+    .form-control {
+      width: 100%;
+      padding: 18px; /* Increased padding */
+      border-radius: 8px; /* Rounded corners */
+      border: 1px solid #ccc;
+      font-size: 1.2rem; /* Increased font size */
+      transition: border-color 0.3s ease;
+    }
+  
+    .form-control:focus {
+      border-color: #007bff;
+    }
+  
+    /* Button styles */
+    .btn {
+      padding: 15px 30px; /* Increased padding */
+      border-radius: 8px; /* Larger rounded corners */
+      font-size: 1.2rem; /* Larger font size */
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+  
+    /* Add Plateforme Button */
+    .btn-primary {
+      background-color: #007bff;
+      color: white;
+      border: none;
+    }
+  
+    .btn-primary:hover {
+      background-color: #0056b3;
+      transform: translateY(-2px);
+    }
+  
+    /* Modify Plateforme Button */
+    .btn-warning {
+      background-color: #ffc107;
+      color: white;
+      border: none;
+    }
+  
+    .btn-warning:hover {
+      background-color: #e0a800;
+      transform: translateY(-2px);
+    }
+  
+    /* Delete Plateforme Button */
+    .btn-danger {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+    }
+  
+    .btn-danger:hover {
+      background-color: #c82333;
+      transform: translateY(-2px);
+    }
+  
+    /* Update Plateforme Button */
+    .btn-success {
+      background-color: #28a745;
+      color: white;
+      border: none;
+    }
+  
+    .btn-success:hover {
+      background-color: #218838;
+      transform: translateY(-2px);
+    }
+  
+    /* Cancel Button */
+    .btn-secondary {
+      background-color: #6c757d;
+      color: white;
+      border: none;
+    }
+  
+    .btn-secondary:hover {
+      background-color: #5a6268;
+      transform: translateY(-2px);
+    }
+  
+    /* Table Styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+      animation: fadeIn 1.5s ease;
+    }
+  
+    th, td {
+      padding: 18px; /* Increased padding */
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+  
+    th {
+      background-color: #f8f9fa;
+    }
+  
+    .table-striped tbody tr:nth-of-type(odd) {
+      background-color: #f9f9f9;
+    }
+  
+    /* Modal overlay */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease;
+    }
+  
+    .modal {
+      background: white;
+      padding: 40px; /* Increased padding */
+      border-radius: 10px;
+      width: 450px; /* Slightly wider modal */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      animation: scaleUp 0.4s ease;
+    }
+  
+    .modal-title {
+      font-size: 1.8rem; /* Increased font size */
+      margin-bottom: 20px;
+      font-weight: 600;
+      color: #333;
+    }
+  
+    .modal-footer {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 25px; /* Increased margin */
+    }
+  
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  
+    @keyframes scaleUp {
+      from {
+        transform: scale(0.9);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+  </style>
+  
