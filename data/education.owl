@@ -1,0 +1,765 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Ontology rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7"/>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Apprentissage_par_projet">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Méthode_d&apos;enseignement"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#teams">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#plateforme"/>
+    </rdfs:subClassOf>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#teams"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#superieur">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Niveau_d&apos;education"/>
+    </rdfs:subClassOf>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#superieur"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Institution">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#propose"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Pedagogie"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#propose"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Technologie_Educative"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Education"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#parent">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#est_parent_de"/>
+        </owl:onProperty>
+        <owl:onClass>
+          <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#etudiant"/>
+        </owl:onClass>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minQualifiedCardinality>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Personne"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#centre_formation">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Institution"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#administrateur">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Personne"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#projet">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#activite_educative"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#git">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#plateforme"/>
+    </rdfs:subClassOf>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <objectif>integration
+</objectif>
+    <estSuperviséPar>
+      <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_admin">
+        <age>45</age>
+        <dateDeNaissance>15/05/1979</dateDeNaissance>
+        <crée>
+          <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Plateforme1">
+            <nom>Site Web</nom>
+          </owl:NamedIndividual>
+        </crée>
+        <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#administrateur"/>
+      </owl:NamedIndividual>
+    </estSuperviséPar>
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#git"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#travail_en_groupe">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#activite_educative"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#enseignant">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#evalue"/>
+        </owl:onProperty>
+        <owl:onClass>
+          <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Evaluation"/>
+        </owl:onClass>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minQualifiedCardinality>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#enseigne"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Cours"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#crée"/>
+        </owl:onProperty>
+        <owl:onClass>
+          <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#examen"/>
+        </owl:onClass>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minQualifiedCardinality>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Personne"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Evaluation">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Education"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#presentiel">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Pedagogie"/>
+    </rdfs:subClassOf>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#presentiel"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#pratique">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Cours"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#validation">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#est_evalue_par"/>
+        </owl:onProperty>
+        <owl:onClass rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#enseignant"/>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minQualifiedCardinality>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Evaluation"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Pedagogie">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Education"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#examen">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Evaluation"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Personne">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#appartient_à"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Institution"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Education"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#jeu_educaif">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Méthode_d&apos;enseignement"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#universite">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Institution"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#activite_educative">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Education"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#magistral">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Cours"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#classroom">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#plateforme"/>
+    </rdfs:subClassOf>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#classroom"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#en_ligne">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Pedagogie"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#en_ligne"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Méthode_d&apos;enseignement">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Education"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#ecole">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Institution"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#moodle">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#plateforme"/>
+    </rdfs:subClassOf>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <objectif>ajouter des cours</objectif>
+    <estSuperviséPar rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_admin"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#moodle"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#secondaire">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Niveau_d&apos;education"/>
+    </rdfs:subClassOf>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#secondaire"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#application_mobile">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Technologie_Educative"/>
+    </rdfs:subClassOf>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#application_mobile"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Technologie_Educative">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Education"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Classe_inversee">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Méthode_d&apos;enseignement"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#primaire">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Niveau_d&apos;education"/>
+    </rdfs:subClassOf>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#primaire"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#plateforme">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Education"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Cours">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#a_niveau_requis"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Niveau_d&apos;education"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Education"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Niveau_d&apos;education">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Education"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#tableau_interactif">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Technologie_Educative"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#tableau_interactif"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Enseignement_différencié">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Méthode_d&apos;enseignement"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#etudiant">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#participe_à"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Evaluation"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#participe_à"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Cours"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Personne"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#expose">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#activite_educative"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#devoir">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#activite_educative"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#est_evalue_par">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Evaluation"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#etudiant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#animePar">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#activite_educative"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#enseignant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#propose">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Cours"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Institution"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#participe_à">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Cours"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#etudiant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#convientÀPédagogie">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Evaluation"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Pedagogie"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#aPourParticipant">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#activite_educative"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#etudiant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#estSuperviséPar">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#administrateur"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#plateforme"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#crée">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Evaluation"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#enseignant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#appartient_à">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Institution"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Personne"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#organisePar">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Institution"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#activite_educative"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#a_niveau_requis">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Cours"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Niveau_d&apos;education"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#enseigne">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Cours"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#enseignant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#evalue">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Evaluation"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#enseignant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#concernantCours">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Cours"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Evaluation"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#est_parent_de">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#etudiant"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#parent"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#utilise">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Cours"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Technologie_Educative"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#estDestinéÀ">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Niveau_d&apos;education"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Technologie_Educative"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#estRéaliséPar">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Personne"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#activite_educative"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#utilisePlateforme">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Personne"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#plateforme"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#appliquePédagogie">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Cours"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Pedagogie"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#appliqueMéthode">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Institution"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Méthode_d&apos;enseignement"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#age">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Personne"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#typeAbonnement">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#plateforme"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#titreexam">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#examen"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#nomMethode">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Méthode_d&apos;enseignement"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#dateCreation">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#examen"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#nomPlateform">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#plateforme"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#nomActivite">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#activite_educative"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#nbQuestions">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#examen"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#dureeEvaluation">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Evaluation"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#lienParental">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#parent"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#typeActivite">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#activite_educative"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#prerequis">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Cours"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#dateDeNaissance">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Personne"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#objectif">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#activite_educative"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#nomInstitution">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Institution"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#dureeAE">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#activite_educative"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#impactEnvironnemental">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Technologie_Educative"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#difficulte">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Niveau_d&apos;education"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#credits">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Cours"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#niveauDifficulte">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#activite_educative"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#numeroContact">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Institution"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#duréeDuCours">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Cours"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#dateFin">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#activite_educative"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#efficacite">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Méthode_d&apos;enseignement"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#note">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Evaluation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#descriptionEvaluation">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Evaluation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#adresseInstitution">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Institution"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#duree">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Niveau_d&apos;education"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#role">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Personne"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#nombreParticipantsMax">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#activite_educative"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#objectifDuCours">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Cours"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#heuresEnseignement">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Cours"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#nomDuCours">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Cours"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#niveau">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Niveau_d&apos;education"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#nom">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Personne"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#descriptionCours">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Cours"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#descriptionActivite">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#activite_educative"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#typeInstitution">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Institution"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#dateEvaluation">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Evaluation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#dateDebut">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#activite_educative"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </owl:DatatypeProperty>
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Enseignement_differencie">
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Enseignement_différencié"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_2">
+    <dateDeNaissance>20/05/1975</dateDeNaissance>
+    <nom>Meher</nom>
+    <age>49</age>
+    <est_parent_de>
+      <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_1">
+        <dateDeNaissance>15/03/2001</dateDeNaissance>
+        <nom>Mehdi</nom>
+        <age>23</age>
+        <participe_à>
+          <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#django">
+            <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#pratique"/>
+            <duréeDuCours>30H</duréeDuCours>
+            <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#presentiel"/>
+          </owl:NamedIndividual>
+        </participe_à>
+        <est_evalue_par>
+          <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_3">
+            <age>35</age>
+            <nom>mohamed</nom>
+            <enseigne rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#django"/>
+            <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#enseignant"/>
+          </owl:NamedIndividual>
+        </est_evalue_par>
+        <appartient_à>
+          <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#institu">
+            <nom>Esprit</nom>
+            <propose rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Plateforme1"/>
+            <appartient_à>
+              <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#apprentissage_par_projet">
+                <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Apprentissage_par_projet"/>
+              </owl:NamedIndividual>
+            </appartient_à>
+            <appartient_à>
+              <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#sup">
+                <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#superieur"/>
+              </owl:NamedIndividual>
+            </appartient_à>
+            <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#universite"/>
+          </owl:NamedIndividual>
+        </appartient_à>
+        <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#etudiant"/>
+      </owl:NamedIndividual>
+    </est_parent_de>
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#parent"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#physique">
+    <credits>4</credits>
+    <duree>1h</duree>
+    <concernantCours>
+      <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#cour_physique">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#pratique"/>
+      </owl:NamedIndividual>
+    </concernantCours>
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#devoir"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_9">
+    <nom>mohamed saadi</nom>
+    <age>50</age>
+    <dateDeNaissance>05/05/1974</dateDeNaissance>
+    <est_parent_de>
+      <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_6">
+        <age>24</age>
+        <niveau>universite</niveau>
+        <dateDeNaissance>22/04/2000</dateDeNaissance>
+        <nom>dhia</nom>
+        <enseigne rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_3"/>
+        <appartient_à>
+          <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#institut_1">
+            <nom>Universite centrale</nom>
+            <propose>
+              <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Plateforme2">
+                <nom>plateforme uc</nom>
+              </owl:NamedIndividual>
+            </propose>
+            <appartient_à rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#sup"/>
+            <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#universite"/>
+          </owl:NamedIndividual>
+        </appartient_à>
+        <participe_à>
+          <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#laravel">
+            <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#pratique"/>
+            <duréeDuCours>30</duréeDuCours>
+            <est_evalue_par>
+              <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_7">
+                <age>50</age>
+                <dateDeNaissance>21/05/1974</dateDeNaissance>
+                <nom>Boudali</nom>
+                <enseigne rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#laravel"/>
+                <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#enseignant"/>
+              </owl:NamedIndividual>
+            </est_evalue_par>
+            <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#presentiel"/>
+          </owl:NamedIndividual>
+        </participe_à>
+        <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#etudiant"/>
+      </owl:NamedIndividual>
+    </est_parent_de>
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#parent"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#technologie_educ1">
+    <nom>Esprit_Plat</nom>
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Technologie_Educative"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#cours_java">
+    <duréeDuCours>30</duréeDuCours>
+    <utilise rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#application_mobile"/>
+    <appartient_à>
+      <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#univ_1">
+        <nom>esprit charguia</nom>
+        <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#universite"/>
+      </owl:NamedIndividual>
+    </appartient_à>
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#magistral"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#exam_1">
+    <note>13</note>
+    <nom>math</nom>
+    <appartient_à>
+      <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_10">
+        <dateDeNaissance>08/11/1999</dateDeNaissance>
+        <niveau>superiieur</niveau>
+        <nom>salah</nom>
+        <age>24</age>
+        <appartient_à rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#univ_1"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#etudiant"/>
+      </owl:NamedIndividual>
+    </appartient_à>
+    <est_evalue_par>
+      <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_12">
+        <age>40</age>
+        <nom>houssem</nom>
+        <dateDeNaissance>20/08/1984</dateDeNaissance>
+        <enseigne rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_10"/>
+        <appartient_à rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#univ_1"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#enseignant"/>
+      </owl:NamedIndividual>
+    </est_evalue_par>
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#examen"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_4">
+    <dateDeNaissance>22/04/1984</dateDeNaissance>
+    <nom></nom>
+    <age>40</age>
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#administrateur"/>
+  </owl:NamedIndividual>
+  <Plateforme rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Plateforme_5b834949-aad2-435f-b384-4f8a82aca73b">
+    <subscriptionType>sss</subscriptionType>
+    <name>sss</name>
+  </Plateforme>
+  <Plateforme rdf:about="file:///C:/Users/dhia-/Desktop/Semantic_Web_Project/WebSemantiqueBack/Plateforme_1bb0a961-7790-49d1-b3ab-6e6ce9080e1a"/>
+  <rdf:Description rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Plateforme_1bb0a961-7790-49d1-b3ab-6e6ce9080e1a">
+    <subscriptionType>Git</subscriptionType>
+    <name>GitHub Updatedssssss</name>
+  </rdf:Description>
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#ecole_1">
+    <nom>ibn manthour</nom>
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#ecole"/>
+  </owl:NamedIndividual>
+  <Plateforme rdf:about="file:///C:/Users/dhia-/Desktop/Semantic_Web_Project/WebSemantiqueBack/Plateforme_91550efe-cfe5-4bde-8e92-768462072f77"/>
+  <Plateforme rdf:about="file:///C:/Users/dhia-/Desktop/Semantic_Web_Project/WebSemantiqueBack/Plateforme_dfbfb706-aa21-4260-8008-418d9073eea0">
+    <name>sss</name>
+    <subscriptionType>null</subscriptionType>
+  </Plateforme>
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#jeu_educatif">
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#jeu_educaif"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#classe_inverse">
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Classe_inversee"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_11">
+    <age>50</age>
+    <dateDeNaissance>11/05/1974</dateDeNaissance>
+    <nom>touhemi</nom>
+    <est_parent_de rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_10"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#parent"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#projet_web3.0">
+    <credits>8</credits>
+    <objectif>realiser le projet de pidev
+</objectif>
+    <organisePar rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_12"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#projet"/>
+  </owl:NamedIndividual>
+  <Plateforme rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Plateforme_0adca02d-41f4-40db-9a8c-08d7b60d1c61">
+    <subscriptionType>sss</subscriptionType>
+    <name>sss</name>
+  </Plateforme>
+  <Plateforme rdf:about="file:///C:/Users/dhia-/Desktop/Semantic_Web_Project/WebSemantiqueBack/Plateforme_311c2598-c38e-4462-a424-c637df5c8ab6">
+    <subscriptionType>git</subscriptionType>
+    <name>github</name>
+  </Plateforme>
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_8">
+    <age>35</age>
+    <nom>azza mastouri</nom>
+    <dateDeNaissance>24/12/1989</dateDeNaissance>
+    <enseigne>
+      <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Web_Semantique">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#pratique"/>
+        <est_evalue_par rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_8"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#presentiel"/>
+      </owl:NamedIndividual>
+    </enseigne>
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#enseignant"/>
+  </owl:NamedIndividual>
+</rdf:RDF>
