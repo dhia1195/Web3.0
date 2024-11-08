@@ -9,7 +9,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./methode.component.scss']
 })
 export class MethodeComponent {
-  
+  type = 'jeu_educatif';
   methodes: any[] = [];
   selectedMethode: any = null; 
   isModalOpen: boolean = false; 
@@ -42,6 +42,19 @@ export class MethodeComponent {
         console.error('Error adding plateforme', error);
       }
     );
+  }
+
+  getMethodeTypeLabel(type: string): string {
+    if (type === 'http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#apprentissage_par_projet') {
+      return 'apprentissage_par_projet';
+    } else if (type === 'http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#classe_inversee') {
+      return 'classe_inversee';
+    } else if (type === 'http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#enseignement_diferencie') {
+      return 'enseignement_diferencie';
+    } else if (type === 'http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#jeu_educatif') {
+      return 'jeu_educatif';
+    }
+    return 'Unknown Type'; // Default if no match
   }
 
   
