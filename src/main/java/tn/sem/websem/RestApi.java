@@ -270,14 +270,13 @@ public class RestApi {
 
         if (model != null) {
             try {
-
-
                 String queryStr =
                         "PREFIX rescue: <http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#> " +
-                                "SELECT ?tech ?nom ?impactEnvironnemental WHERE { " +
+                                "SELECT ?tech ?nom ?impactEnvironnemental ?type WHERE { " +
                                 "  ?tech a rescue:Technologie_Educative . " +
                                 "  ?tech rescue:nom ?nom . " +
-                                "  OPTIONAL { ?tech rescue:impactEnvironnemental ?impactEnvironnemental } " +
+                                "  OPTIONAL { ?tech rescue:impactEnvironnemental ?impactEnvironnemental } . " +
+                                "  OPTIONAL { ?tech a ?type } . " +
                                 "}";
 
                 Query query = QueryFactory.create(queryStr);
@@ -289,8 +288,9 @@ public class RestApi {
                         String nom = solution.getLiteral("nom").getString();
                         String impactEnvironnemental = solution.contains("impactEnvironnemental") ?
                                 solution.getLiteral("impactEnvironnemental").getString() : "";
+                        String type = solution.contains("type") ? solution.getResource("type").getLocalName() : "";
 
-                        Technologie_EducativeDto dto = new Technologie_EducativeDto(nom, impactEnvironnemental);
+                        Technologie_EducativeDto dto = new Technologie_EducativeDto(nom, impactEnvironnemental, type);
                         technologies.add(dto);
                     }
                 }
@@ -313,19 +313,33 @@ public class RestApi {
             try {
                 String technologyId = "Technologie_Educative_" + UUID.randomUUID();
 
+                // Get the type (subclass) from the DTO (e.g., "application_mobile", "tableau_interactif")
+                String type = technologieDto.getType();
+                String typeRDF = "";
+
+                // Add the specific subclass type if it's provided
+                if (type != null && !type.isEmpty()) {
+                    typeRDF = " ; a rescue:" + type;
+                }
+
+                // Construct the insert query, making sure to add the proper type only once
                 String insertQuery =
                         "PREFIX rescue: <http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#> " +
                                 "INSERT { " +
                                 "  <http://rescuefood.org/ontology/" + technologyId + "> a rescue:Technologie_Educative ; " +
                                 "  rescue:nom \"" + technologieDto.getNom() + "\" ; " +
-                                "  rescue:impactEnvironnemental \"" + technologieDto.getImpactEnvironnemental() + "\" . " +
+                                "  rescue:impactEnvironnemental \"" + technologieDto.getImpactEnvironnemental() + "\" " +
+                                typeRDF +  // Add the specific type if provided
                                 "} WHERE {}";
 
+                // Execute the update query to add the new technology to the ontology model
                 UpdateRequest updateRequest = UpdateFactory.create(insertQuery);
                 UpdateAction.execute(updateRequest, model);
 
+                // Save the model after the update
                 JenaEngine.saveModel(model, "data/education.owl");
 
+                // Return success response
                 return new ResponseEntity<>("Technologie Educative added successfully with ID: " + technologyId, HttpStatus.CREATED);
             } catch (Exception e) {
                 e.printStackTrace(); // Debugging
@@ -335,6 +349,8 @@ public class RestApi {
             return new ResponseEntity<>("Error when reading model from ontology", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+
 
     @GetMapping("/methodes")
     @CrossOrigin(origins = "http://localhost:4200")
@@ -565,49 +581,74 @@ public class RestApi {
 
 
 
-    //personne
-
-
     @GetMapping("/personne")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<String> getPersonne() {
         if (model != null) {
             String sparqlQuery = """
-    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-    PREFIX base: <http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#>
-    PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-    SELECT ?personne ?nom ?age
-    WHERE {
-        ?personne rdf:type base:Personne .  
-        ?personne base:nom ?nom .   
-        ?personne base:age ?age .  
-    }
-    LIMIT 10  # Optional: Add a limit if there are a lot of records
-""";
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            PREFIX base: <http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#>
+            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+            SELECT ?personne ?nom ?age ?niveau ?dateNaissance ?role ?est_parent_de ?estSuperviséPar ?participe_à ?utilisePlateforme ?evalue
+            WHERE {
+                ?personne rdf:type base:Personne .  
+                ?personne base:nom ?nom .   
+                ?personne base:age ?age .
+                
+                OPTIONAL { ?personne base:niveau ?niveau }
+                OPTIONAL { ?personne base:dateNaissance ?dateNaissance }
+                OPTIONAL { ?personne base:est_parent_de ?est_parent_de }  
+                OPTIONAL { ?personne base:estSuperviséPar ?estSuperviséPar }
+                OPTIONAL { ?personne base:participe_à ?participe_à }
+                OPTIONAL { ?personne base:utilisePlateforme ?utilisePlateforme }  
+                OPTIONAL { ?personne base:evalue ?evalue }
+                
+                OPTIONAL { ?personne rdf:type base:Administrateur . BIND("Administrateur" AS ?role) }
+                OPTIONAL { ?personne rdf:type base:Parent . BIND("Parent" AS ?role) }
+                OPTIONAL { ?personne rdf:type base:Etudiant . BIND("Etudiant" AS ?role) }
+                OPTIONAL { ?personne rdf:type base:Enseignant . BIND("Enseignant" AS ?role) }
+            }
+            LIMIT 10
+        """;
 
             Query query = QueryFactory.create(sparqlQuery);
             try (QueryExecution qexec = QueryExecutionFactory.create(query, model)) {
                 ResultSet results = qexec.execSelect();
-
-                // Convert the ResultSet to JSON and modify the 'age'
                 JSONArray jsonResults = new JSONArray();
+
                 while (results.hasNext()) {
                     QuerySolution solution = results.nextSolution();
 
-                    // Get the values from the query solution
+                    // Get basic fields
                     String personne = solution.getResource("personne").toString();
                     String nom = solution.getLiteral("nom").getString();
-                    Literal ageLiteral = solution.getLiteral("age");
+                    int age = solution.contains("age") ? solution.getLiteral("age").getInt() : 0;
 
-                    // Modify the 'age' value if needed (e.g., add 5 years to the age)
-                    int age = ageLiteral.getInt();
+                    // Collect optional fields with null checks
+                    String niveau = solution.contains("niveau") ? solution.getLiteral("niveau").getString() : null;
+                    String dateNaissance = solution.contains("dateNaissance") ? solution.getLiteral("dateNaissance").getString() : null;
+                    String estParentDe = solution.contains("est_parent_de") ? solution.getResource("est_parent_de").toString() : null;
+                    String estSuperviséPar = solution.contains("estSuperviséPar") ? solution.getResource("estSuperviséPar").toString() : null;
+                    String participeA = solution.contains("participe_à") ? solution.getResource("participe_à").toString() : null;
+                    String utilisePlateforme = solution.contains("utilisePlateforme") ? solution.getResource("utilisePlateforme").toString() : null;
+                    String evalue = solution.contains("evalue") ? solution.getResource("evalue").toString() : null;
 
+                    // Get role (it’s assigned via the BIND in SPARQL)
+                    String role = solution.contains("role") ? solution.getLiteral("role").getString() : "Unknown";
 
                     // Create a JSONObject to represent the result
                     JSONObject result = new JSONObject();
                     result.put("personne", personne);
                     result.put("nom", nom);
-                    result.put("age", age); // Add modified age
+                    result.put("age", age);
+                    result.put("role", role);
+                    result.put("niveau", niveau);
+                    result.put("dateNaissance", dateNaissance);
+                    result.put("est_parent_de", estParentDe);
+                    result.put("estSuperviséPar", estSuperviséPar);
+                    result.put("participe_à", participeA);
+                    result.put("utilisePlateforme", utilisePlateforme);
+                    result.put("evalue", evalue);
 
                     jsonResults.put(result);
                 }
@@ -619,36 +660,89 @@ public class RestApi {
                 return new ResponseEntity<>(jsonString, HttpStatus.OK);
 
             } catch (Exception e) {
-                return new ResponseEntity<>("Error executing SPARQL query: " + e.getMessage(),
-                        HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<>("Error executing SPARQL query: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
-        return new ResponseEntity<>("Error when reading model from ontology",
-                HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>("Error when reading model from ontology", HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+
 
     @PostMapping("/personne")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<String> addPersonne(@RequestBody Map<String, Object> payload) {
         if (model != null) {
             try {
-                String personneId = "" + UUID.randomUUID();
+                // Generate a unique ID for the new Personne
+                String personneId = "Personne_" + UUID.randomUUID().toString().replace("-", "_");
+
+                // Start building the SPARQL update query
+                StringBuilder updateQuery = new StringBuilder(
+                        "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
+                                "PREFIX base: <http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#> " +
+                                "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " +
+                                "INSERT DATA { " +
+                                "  base:" + personneId + " rdf:type base:Personne ; " +
+                                "  base:nom \"" + sanitizeLiteral(payload.get("nom")) + "\" ; " +
+                                "  base:niveau \"" + sanitizeLiteral(payload.get("niveau")) + "\" ; " +
+                                "  base:dateNaissance \"" + sanitizeLiteral(payload.get("dateNaissance")) + "\" ; " +
+                                "  base:age \"" + sanitizeLiteral(payload.get("age")) + "\"^^xsd:int . "
+                );
+                if (payload.containsKey("est_parent_de")) {
+                    String etudiantId = payload.get("est_parent_de").toString();
+                    updateQuery.append("  base:").append(personneId).append(" base:est_parent_de base:").append(etudiantId).append(" . ");
+                }
+
+                // Autres attributs similaires
+                if (payload.containsKey("estSuperviséPar")) {
+                    String superviseurId = payload.get("estSuperviséPar").toString();
+                    updateQuery.append("  base:").append(personneId).append(" base:estSuperviséPar base:").append(superviseurId).append(" . ");
+                }
+                if (payload.containsKey("evalue")) {
+                    String etudiantId = payload.get("evalue").toString();
+                    updateQuery.append("  base:").append(personneId).append(" base:evalue base:").append(etudiantId).append(" . ");
+                }
+
+                // Autres attributs similaires
+                if (payload.containsKey("participe_à")) {
+                    String superviseurId = payload.get("participe_à").toString();
+                    updateQuery.append("  base:").append(personneId).append(" base:participe_à base:").append(superviseurId).append(" . ");
+                }
+                if (payload.containsKey("utilisePlatforme")) {
+                    String superviseurId = payload.get("utilisePlatforme").toString();
+                    updateQuery.append("  base:").append(personneId).append(" base:utilisePlatforme base:").append(superviseurId).append(" . ");
+                }
 
 
-                String updateQuery =
-                        "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
-                                "PREFIX base: <http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#>" +
-                                "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
-                                "INSERT DATA {" +
-                                "base:" + personneId + " rdf:type base:Personne ;" +
-                                "base:nom \"" + payload.get("nom") + "\" ;" +
-                                "base:age \"" + payload.get("age") + "\"^^xsd:int ." +
-                                "}";
 
-                UpdateRequest updateRequest = UpdateFactory.create(updateQuery);
-                Dataset dataset = DatasetFactory.create(model);
-                UpdateProcessor processor = UpdateExecutionFactory.create(updateRequest, dataset);
-                processor.execute();
+                // Check for sub-entity roles in the payload and add them to the query
+                if (payload.containsKey("role")) {
+                    String role = payload.get("role").toString().toLowerCase();
+                    switch (role) {
+                        case "administrateur":
+                            updateQuery.append("  base:").append(personneId).append(" rdf:type base:Administrateur . ");
+                            break;
+                        case "enseignant":
+                            updateQuery.append("  base:").append(personneId).append(" rdf:type base:Enseignant . ");
+                            break;
+                        case "etudiant":
+                            updateQuery.append("  base:").append(personneId).append(" rdf:type base:Etudiant . ");
+                            break;
+                        case "parent":
+                            updateQuery.append("  base:").append(personneId).append(" rdf:type base:Parent . ");
+                            break;
+                        default:
+                            break; // No action for unrecognized roles
+                    }
+                }
+
+                // Close the SPARQL update query
+                updateQuery.append("}");
+
+                // Execute the SPARQL update query
+                JenaEngine.executeUpdate(updateQuery.toString(), model);
+
+                // Save the updated model to a file to persist changes
                 JenaEngine.saveModel(model, "data/education.owl");
 
                 return new ResponseEntity<>("Personne added successfully", HttpStatus.OK);
@@ -657,40 +751,109 @@ public class RestApi {
                         HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
-        return new ResponseEntity<>("Error when reading model from ontology",
-                HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>("Error when reading model from ontology", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    // Helper function to sanitize literal values
+    private String sanitizeLiteral(Object value) {
+        return value.toString().replace("\"", "\\\""); // Escape double quotes
     }
     @PutMapping("/personne/{id}")
     @CrossOrigin(origins = "http://localhost:4200")
-    public ResponseEntity<String> updateInventory(@PathVariable String id, @RequestBody Map<String, Object> payload) {
+    public ResponseEntity<String> updatePersonne(@PathVariable String id, @RequestBody Map<String, Object> payload) {
         if (model != null) {
             try {
-                String newName = payload.get("nom").toString();
-                int newAge = Integer.parseInt(payload.get("age").toString()); // Ensure age is parsed correctly as an integer
+                // Safely retrieve values from the payload, using default values if necessary
+                String newName = payload.containsKey("nom") ? sanitizeLiteral((String) payload.get("nom")) : null;
+                Integer newAge = payload.containsKey("age") ? Integer.parseInt(payload.get("age").toString()) : null;
+                String newNiveau = payload.containsKey("niveau") ? sanitizeLiteral((String) payload.get("niveau")) : null;
+                String newDateNaissance = payload.containsKey("dateNaissance") ? sanitizeLiteral((String) payload.get("dateNaissance")) : null;
+                String newEstParentDe = payload.containsKey("est_parent_de") ? sanitizeLiteral((String) payload.get("est_parent_de")) : null;
 
                 // Ensure ID is properly formatted with a prefix (e.g., "base:")
                 String fullId = "base:" + id;
 
-                // Construct SPARQL Update query using plain string concatenation
-                String sparqlUpdate =
-                        "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
-                                "PREFIX base: <http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#> " +
-                                "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " +
-                                "DELETE { " +
-                                "   " + fullId + " base:nom ?oldNom ; " +
-                                "               base:age ?oldAge . " +
-                                "} " +
-                                "INSERT { " +
-                                "   " + fullId + " base:nom \"" + newName + "\" ; " +
-                                "               base:age \"" + newAge + "\"^^xsd:int . " +
-                                "} " +
-                                "WHERE { " +
-                                "   " + fullId + " base:nom ?oldNom ; " +
-                                "               base:age ?oldAge . " +
-                                "}";
+                // Build the SPARQL query with dynamic DELETE/INSERT clauses
+                StringBuilder sparqlUpdate = new StringBuilder();
+                sparqlUpdate.append("PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ")
+                        .append("PREFIX base: <http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#> ")
+                        .append("PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> ")
+                        .append("DELETE { ");
+
+                // Only delete properties that are present in the payload
+                boolean hasDeleteClause = false;
+                if (newName != null) {
+                    sparqlUpdate.append(fullId).append(" base:nom ?oldNom . ");
+                    hasDeleteClause = true;
+                }
+                if (newAge != null) {
+                    sparqlUpdate.append(fullId).append(" base:age ?oldAge . ");
+                    hasDeleteClause = true;
+                }
+                if (newNiveau != null) {
+                    sparqlUpdate.append(fullId).append(" base:niveau ?oldNiveau . ");
+                    hasDeleteClause = true;
+                }
+                if (newDateNaissance != null) {
+                    sparqlUpdate.append(fullId).append(" base:dateNaissance ?oldDateNaissance . ");
+                    hasDeleteClause = true;
+                }
+                if (newEstParentDe != null) {
+                    sparqlUpdate.append(fullId).append(" base:est_parent_de ?oldEstParentDe . ");
+                    hasDeleteClause = true;
+                }
+
+                // Ensure DELETE clause ends with a period
+                if (hasDeleteClause) {
+                    sparqlUpdate.append("} ");
+                } else {
+                    sparqlUpdate.append("} ");
+                }
+
+                sparqlUpdate.append("INSERT { ");
+
+                // Only insert values that are provided in the payload
+                boolean hasInsertClause = false;
+                if (newName != null) {
+                    sparqlUpdate.append(fullId).append(" base:nom \"").append(newName).append("\" . ");
+                    hasInsertClause = true;
+                }
+                if (newAge != null) {
+                    sparqlUpdate.append(fullId).append(" base:age \"").append(newAge).append("\"^^xsd:int . ");
+                    hasInsertClause = true;
+                }
+                if (newNiveau != null) {
+                    sparqlUpdate.append(fullId).append(" base:niveau \"").append(newNiveau).append("\" . ");
+                    hasInsertClause = true;
+                }
+                if (newDateNaissance != null) {
+                    sparqlUpdate.append(fullId).append(" base:dateNaissance \"").append(newDateNaissance).append("\" . ");
+                    hasInsertClause = true;
+                }
+                if (newEstParentDe != null) {
+                    sparqlUpdate.append(fullId).append(" base:est_parent_de <").append(newEstParentDe).append("> . ");
+                    hasInsertClause = true;
+                }
+
+                // Ensure INSERT clause ends with a period
+                if (hasInsertClause) {
+                    sparqlUpdate.append("} ");
+                } else {
+                    sparqlUpdate.append("} ");
+                }
+
+                sparqlUpdate.append("WHERE { ")
+                        .append("   ").append(fullId).append(" base:nom ?oldNom ; ")
+                        .append("               base:age ?oldAge ; ")
+                        .append("               base:niveau ?oldNiveau ; ")
+                        .append("               base:dateNaissance ?oldDateNaissance ; ")
+                        .append("               base:est_parent_de ?oldEstParentDe . ")
+                        .append("}");
+
+                System.out.println(sparqlUpdate.toString());
 
                 // Execute the SPARQL update query
-                JenaEngine.executeUpdate(sparqlUpdate, model);
+                JenaEngine.executeUpdate(sparqlUpdate.toString(), model);
 
                 // Save the updated model to a file to persist changes
                 JenaEngine.saveModel(model, "data/education.owl");
@@ -703,9 +866,17 @@ public class RestApi {
         return new ResponseEntity<>("Error when reading model from ontology", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+
+    // Utility function to sanitize input (if needed, for security reasons)
+
+
+
+
+
+
     @DeleteMapping("/personne/{id}")
     @CrossOrigin(origins = "http://localhost:4200")
-    public ResponseEntity<String> deleteInventory(@PathVariable String id) {
+    public ResponseEntity<String> deletePersonne(@PathVariable String id) {
         if (model != null) {
             try {
                 // Ensure ID is properly formatted with a prefix (e.g., "base:")
@@ -735,6 +906,172 @@ public class RestApi {
                 return new ResponseEntity<>("Personne deleted successfully", HttpStatus.OK);
             } catch (Exception e) {
                 return new ResponseEntity<>("Error deleting Personne: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+        return new ResponseEntity<>("Error when reading model from ontology", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @GetMapping("/pedagogie")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public ResponseEntity<String> getPedagodie() {
+        if (model != null) {
+            String sparqlQuery = """
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX base: <http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#>
+    PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+    SELECT ?pedagogie ?nom 
+    WHERE {
+        ?pedagogie rdf:type base:Pedagogie .  
+        ?pedagogie base:nom ?nom .   
+         
+    }
+    LIMIT 10  # Optional: Add a limit if there are a lot of records
+""";
+
+            Query query = QueryFactory.create(sparqlQuery);
+            try (QueryExecution qexec = QueryExecutionFactory.create(query, model)) {
+                ResultSet results = qexec.execSelect();
+
+                // Convert the ResultSet to JSON and modify the 'age'
+                JSONArray jsonResults = new JSONArray();
+                while (results.hasNext()) {
+                    QuerySolution solution = results.nextSolution();
+
+                    // Get the values from the query solution
+                    String pedagogie = solution.getResource("pedagogie").toString();
+                    String nom = solution.getLiteral("nom").getString();
+
+
+
+
+                    // Create a JSONObject to represent the result
+                    JSONObject result = new JSONObject();
+                    result.put("pedagodie", pedagogie);
+                    result.put("nom", nom);
+
+
+                    jsonResults.put(result);
+                }
+
+                // Convert the results to a JSON string
+                String jsonString = jsonResults.toString();
+
+                // Return the modified JSON as a response
+                return new ResponseEntity<>(jsonString, HttpStatus.OK);
+
+            } catch (Exception e) {
+                return new ResponseEntity<>("Error executing SPARQL query: " + e.getMessage(),
+                        HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+        return new ResponseEntity<>("Error when reading model from ontology",
+                HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @PostMapping("/pedagogie")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public ResponseEntity<String> addPedagogie(@RequestBody Map<String, Object> payload) {
+        if (model != null) {
+            try {
+                String pedagogieId = "" + UUID.randomUUID();
+
+
+                String updateQuery =
+                        "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+                                "PREFIX base: <http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#>" +
+                                "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
+                                "INSERT DATA {" +
+                                "base:" + pedagogieId + " rdf:type base:Pedagogie ;" +
+                                "base:nom \"" + payload.get("nom") + "\" ;" +
+                                "}";
+
+                UpdateRequest updateRequest = UpdateFactory.create(updateQuery);
+                Dataset dataset = DatasetFactory.create(model);
+                UpdateProcessor processor = UpdateExecutionFactory.create(updateRequest, dataset);
+                processor.execute();
+                JenaEngine.saveModel(model, "data/education.owl");
+
+                return new ResponseEntity<>("Pedagogie added successfully", HttpStatus.OK);
+            } catch (Exception e) {
+                return new ResponseEntity<>("Error adding Pedagogie: " + e.getMessage(),
+                        HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+        return new ResponseEntity<>("Error when reading model from ontology",
+                HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @PutMapping("/pedagogie/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public ResponseEntity<String> updatePedagogie(@PathVariable String id, @RequestBody Map<String, Object> payload) {
+        if (model != null) {
+            try {
+                String newName = payload.get("nom").toString();
+                // Ensure age is parsed correctly as an integer
+
+                // Ensure ID is properly formatted with a prefix (e.g., "base:")
+                String fullId = "base:" + id;
+
+                // Construct SPARQL Update query using plain string concatenation
+                String sparqlUpdate =
+                        "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
+                                "PREFIX base: <http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#> " +
+                                "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " +
+                                "DELETE { " +
+                                "   " + fullId + " base:nom ?oldNom . " +
+
+                                "} " +
+                                "INSERT { " +
+                                "   " + fullId + " base:nom \"" + newName + "\" . " +
+                                "} " +
+                                "WHERE { " +
+                                "   " + fullId + " base:nom ?oldNom . " +
+                                "}";
+
+                // Execute the SPARQL update query
+                JenaEngine.executeUpdate(sparqlUpdate, model);
+
+                // Save the updated model to a file to persist changes
+                JenaEngine.saveModel(model, "data/education.owl");
+
+                return new ResponseEntity<>("Pedagogie updated successfully", HttpStatus.OK);
+            } catch (Exception e) {
+                return new ResponseEntity<>("Error updating Pedagogie: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+        return new ResponseEntity<>("Error when reading model from ontology", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @DeleteMapping("/pedagogie/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public ResponseEntity<String> deletePedagogie(@PathVariable String id) {
+        if (model != null) {
+            try {
+                // Ensure ID is properly formatted with a prefix (e.g., "base:")
+                String fullId = "base:" + id;
+
+                // Construct SPARQL Delete query using string concatenation
+                String sparqlDelete =
+                        "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
+                                "PREFIX base: <http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#> " +
+                                "DELETE { " +
+                                "   " + fullId + " rdf:type base:Pedagogie ; " +
+                                "               base:nom ?oldNom . " +
+                                "} " +
+                                "WHERE { " +
+                                "   " + fullId + " rdf:type base:Pedagogie ; " +
+                                "               base:nom ?oldNom . " +
+                                "}";
+
+                // Execute the SPARQL delete query
+                JenaEngine.executeUpdate(sparqlDelete, model);
+
+                // Save the updated model to a file to persist changes
+                JenaEngine.saveModel(model, "data/education.owl");
+
+                return new ResponseEntity<>("Pedagogie deleted successfully", HttpStatus.OK);
+            } catch (Exception e) {
+                return new ResponseEntity<>("Error deleting Pedagogie: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
         return new ResponseEntity<>("Error when reading model from ontology", HttpStatus.INTERNAL_SERVER_ERROR);

@@ -10,4 +10,5 @@ public class Technologie_EducativeDto {
 
     private String nom;
     private String impactEnvironnemental;
+    private String type;
 }
