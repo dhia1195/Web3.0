@@ -23,6 +23,8 @@ import { SidebarComponent } from './layouts/full/sidebar/sidebar.component';
 import { HeaderComponent } from './layouts/full/header/header.component';
 import { BrandingComponent } from './layouts/full/sidebar/branding.component';
 import { AppNavItemComponent } from './layouts/full/sidebar/nav-item/nav-item.component';
+import { CommonModule } from '@angular/common';
+import { EvaluationComponent } from './pages/ui-components/evaluation/evaluation.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,7 @@ import { AppNavItemComponent } from './layouts/full/sidebar/nav-item/nav-item.co
     SidebarComponent,
     HeaderComponent,
     BrandingComponent,
-    AppNavItemComponent,
+    AppNavItemComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +43,7 @@ import { AppNavItemComponent } from './layouts/full/sidebar/nav-item/nav-item.co
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    CommonModule,
     MaterialModule,
     TablerIconsModule.pick(TablerIcons),
   ],

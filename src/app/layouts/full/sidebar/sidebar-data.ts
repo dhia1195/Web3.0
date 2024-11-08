@@ -18,6 +18,21 @@ export const navItems: NavItem[] = [
     route: '/ui-components/plateforme',
   },
   {
+    displayName: 'Cours',
+    iconName: 'school',
+    route: '/ui-components/cours',
+  },
+  {
+    displayName: 'evaluation',
+    iconName: 'school',
+    route: '/ui-components/evaluation',
+  },
+  {
+    displayName: 'activite-educative',
+    iconName: 'school',
+    route: '/ui-components/activite-educative',
+  },
+  {
     displayName: 'Technologies d` Education',
     iconName: 'school',
     route: '/ui-components/technologie',

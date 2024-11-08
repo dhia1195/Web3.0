@@ -19,6 +19,9 @@ import { AppTooltipsComponent } from './tooltips/tooltips.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { PlateformeComponent } from './plateforme/plateforme.component';
 import { TechnologieEducativeComponent } from './technologie-educative/technologie-educative.component';
+import { CoursComponent } from './cours/cours.component';
+import { EvaluationComponent } from './evaluation/evaluation.component';
+import { ActiviteEducativeComponent } from './activite-educative/activite-educative.component';
 
 @NgModule({
   imports: [
@@ -37,7 +40,10 @@ import { TechnologieEducativeComponent } from './technologie-educative/technolog
     AppMenuComponent,
     AppTooltipsComponent,
     PlateformeComponent,
-    TechnologieEducativeComponent
+    TechnologieEducativeComponent,
+    CoursComponent,
+    EvaluationComponent,
+    ActiviteEducativeComponent
   ],
 })
 export class UicomponentsModule {}
