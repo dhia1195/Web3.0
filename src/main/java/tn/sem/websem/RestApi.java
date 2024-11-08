@@ -339,45 +339,52 @@ public class RestApi {
     public ResponseEntity<String> getAllMethodes() {
         if (model != null) {
             try {
+                // Updated SPARQL query to include the 'type' field
                 String queryStr =
                         "PREFIX rescue: <http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#> " +
                                 "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
-                                "SELECT ?id ?nom ?duree WHERE { " +
-                                "  ?methode rdf:type rescue:Methode . " +
+                                "SELECT ?id ?nom ?duree ?type WHERE { " +
                                 "  ?methode rescue:nom ?nom . " +
                                 "  ?methode rescue:duree ?duree . " +
+                                "  ?methode rdf:type ?type . " + // Added type field
                                 "  BIND(STR(?methode) AS ?id) . " + // Include the ID (URI) as ?id
+                                "  FILTER (?type IN (rescue:apprentissage_par_projet, rescue:classe_inversee, rescue:enseignement_differencie, rescue:jeu_educatif)) " +
                                 "}";
 
+                // Execute the query
                 Query query = QueryFactory.create(queryStr);
                 QueryExecution qExec = QueryExecutionFactory.create(query, model);
                 ResultSet results = qExec.execSelect();
 
+                // Convert the results to JSON format
                 String jsonResponse = resultSetToJson(results);
                 return new ResponseEntity<>(jsonResponse, HttpStatus.OK);
             } catch (Exception e) {
-                return new ResponseEntity<>("Error fetching plateformes: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+                // Handle any exceptions that occur
+                return new ResponseEntity<>("Error fetching methodes: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
             }
         } else {
+            // Handle the case where the model is not available
             return new ResponseEntity<>("Error when reading model from ontology", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
 
+
     @PostMapping("/addMethode")
     @CrossOrigin(origins = "http://localhost:4200")
-    public ResponseEntity<String> addPlateforme(@RequestBody MethodeEnseignementDto methodeDto) {
+    public ResponseEntity<String> addMethode(@RequestBody MethodeEnseignementDto methodeDto) {
         if (model != null) {
             try {
                 String methodeId = "Methode_" + UUID.randomUUID().toString();
-
+                String methodeType = methodeDto.getType();
                 String insertQuery =
                         "PREFIX rescue: <http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#> " +
                                 "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
                                 "INSERT { " +
-                                "  <" + methodeId + "> rdf:type rescue:Methode . " +
-                                "  <" + methodeId + "> rescue:nom \"" + methodeDto.getNom() + "\" . " +
+                                "  <" + methodeId + "> rdf:type rescue:" + methodeType + " . " +
                                 "  <" + methodeId + "> rescue:duree \"" + methodeDto.getDuree() + "\" . " +
+                                "  <" + methodeId + "> rescue:nom \"" + methodeDto.getNom() + "\" . " + // Add the type
                                 "} WHERE { }"; // No need for a WHERE clause since we are inserting a new resource
 
                 UpdateRequest updateRequest = UpdateFactory.create(insertQuery);
@@ -393,12 +400,13 @@ public class RestApi {
             return new ResponseEntity<>("Error when reading model from ontology", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     @PutMapping("/modifyMethode/{id}")
     @CrossOrigin(origins = "http://localhost:4200", methods = {RequestMethod.PUT, RequestMethod.OPTIONS})
     public ResponseEntity<String> modifyMethode(@PathVariable String id, @RequestBody MethodeEnseignementDto methodeDto) {
         if (model != null) {
             try {
-                // Ensure the plateforme resource exists by ID
+                // Ensure the methode resource exists by ID
                 Resource methodeResource = model.getResource("http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#" + id);
                 if (methodeResource == null) {
                     return new ResponseEntity<>("Methode enseignement not found", HttpStatus.NOT_FOUND);
@@ -410,17 +418,19 @@ public class RestApi {
                                 "DELETE { " +
                                 "  ?methode rescue:nom ?oldnom . " +
                                 "  ?methode rescue:duree ?oldduree . " +
+                                "  ?methode rescue:type ?oldtype . " + // Delete existing type
                                 "} " +
                                 "INSERT { " +
                                 "  ?methode rescue:nom \"" + escapeSpecialCharacterss(methodeDto.getNom()) + "\" . " +
                                 "  ?methode rescue:duree \"" + escapeSpecialCharacterss(methodeDto.getDuree()) + "\" . " +
+                                "  ?methode rescue:type <" + escapeSpecialCharacterss(methodeDto.getType()) + "> . " + // Insert the new type
                                 "} " +
                                 "WHERE { " +
                                 "  BIND(<" + id + "> AS ?methode) ." + // Ensure the id is correctly formatted in the URI
                                 "  OPTIONAL { ?methode rescue:nom ?oldnom } ." +
                                 "  OPTIONAL { ?methode rescue:duree ?oldduree } ." +
+                                "  OPTIONAL { ?methode rescue:type ?oldtype } ." +
                                 "}";
-
 
                 // Create and execute the update request
                 UpdateRequest updateRequest = UpdateFactory.create(modifyQuery);
@@ -437,6 +447,7 @@ public class RestApi {
             return new ResponseEntity<>("Error when reading model from ontology", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     private String escapeSpecialCharacterss(String input) {
         if (input == null) return "";
         return input.replace("\"", "\\\"")
@@ -452,23 +463,21 @@ public class RestApi {
                     return new ResponseEntity<>("Methode not found", HttpStatus.NOT_FOUND);
                 }
 
-                String modifyQuery =
+                String deleteQuery =
                         "PREFIX rescue: <http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#> " +
                                 "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
                                 "DELETE { " +
                                 "  ?methode rescue:nom ?oldnom . " +
                                 "  ?methode rescue:duree ?oldduree . " +
                                 "} " +
-
                                 "WHERE { " +
                                 "  BIND(<" + id + "> AS ?methode) ." + // Ensure the id is correctly formatted in the URI
                                 "  OPTIONAL { ?methode rescue:nom ?oldnom } ." +
                                 "  OPTIONAL { ?methode rescue:duree ?oldduree } ." +
                                 "}";
 
-
                 // Create and execute the update request
-                UpdateRequest updateRequest = UpdateFactory.create(modifyQuery);
+                UpdateRequest updateRequest = UpdateFactory.create(deleteQuery);
                 UpdateAction.execute(updateRequest, model);
 
                 // Save the updated model to the ontology file
@@ -487,21 +496,24 @@ public class RestApi {
             return new ResponseEntity<>("Error when reading model from ontology", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     @DeleteMapping("/deleteMethodes/all")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<String> deleteAllMethodes() {
         if (model != null) {
             try {
-                // Define the SPARQL DELETE query to remove all plateforme resources
+                // Define the SPARQL DELETE query to remove all methode resources
                 String deleteQuery =
                         "PREFIX rescue: <http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#> " +
                                 "DELETE { " +
                                 "  ?methode rescue:nom ?oldnom . " +
                                 "  ?methode rescue:duree ?oldduree . " +
+                                "  ?methode rescue:type ?oldtype . " + // Delete the type field
                                 "} " +
                                 "WHERE { " +
                                 "  ?methode rescue:nom ?oldnom ." +
                                 "  ?methode rescue:duree ?oldduree ." +
+                                "  ?methode rescue:type ?oldtype ." +
                                 "}";
 
                 // Create and execute the delete request
@@ -519,6 +531,7 @@ public class RestApi {
             return new ResponseEntity<>("Error when reading model from ontology", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     @DeleteMapping("/deleteAllTechnologies")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<String> deleteAllTechnologies() {
