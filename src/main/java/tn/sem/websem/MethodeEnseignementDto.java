@@ -11,4 +11,5 @@ import lombok.NoArgsConstructor;
 public class MethodeEnseignementDto {
     private String nom;
     private String duree;
+    private String type;
 }
