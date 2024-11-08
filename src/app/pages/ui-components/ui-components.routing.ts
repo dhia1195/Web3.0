@@ -7,6 +7,7 @@ import { AppListsComponent } from './lists/lists.component';
 import { AppMenuComponent } from './menu/menu.component';
 import { AppTooltipsComponent } from './tooltips/tooltips.component';
 import { PlateformeComponent } from './plateforme/plateforme.component';
+import { MethodeComponent } from './methode/methode.component';
 import { TechnologieEducativeComponent } from './technologie-educative/technologie-educative.component';
 import { CoursComponent } from './cours/cours.component';
 import { EvaluationComponent } from './evaluation/evaluation.component';
@@ -53,6 +54,10 @@ export const UiComponentsRoutes: Routes = [
         path: 'activite-educative',
         component: ActiviteEducativeComponent,
       },      {
+        path: 'methode',
+        component: MethodeComponent,
+      },
+      {
         path: 'technologie',
         component: TechnologieEducativeComponent,
       },

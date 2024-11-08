@@ -1,5 +1,4 @@
 <div class="plateforme-container">
-    <!-- Form for adding a new technology -->
     <h2 class="section-title add-title">Add a New Technologie</h2>
     <form #technologyForm="ngForm" (ngSubmit)="addTechnologie()">
       <div class="form-group">
@@ -15,6 +14,7 @@
           placeholder="Enter technology name"
         />
       </div>
+    
       <div class="form-group">
         <label for="impactEnvironnemental">Impact Environnemental:</label>
         <input
@@ -28,8 +28,27 @@
           placeholder="Enter environmental impact"
         />
       </div>
+    
+      <!-- Select dropdown for choosing the type -->
+      <div class="form-group">
+        <label for="type">Type:</label>
+        <select
+          id="type"
+          name="type"
+          ngModel
+          [(ngModel)]="newTechnology.type"
+          required
+          class="form-control"
+        >
+          <option value="" disabled>Select type</option>
+          <option value="application_mobile">Application Mobile</option>
+          <option value="tableau_interactif">Tableau Interactif</option>
+        </select>
+      </div>
+    
       <button type="submit" class="btn btn-primary">Add Technologie</button>
     </form>
+    
   
     <!-- Display list of technologies -->
     <h2 class="section-title list-title">Technologies List</h2>
@@ -38,12 +57,16 @@
         <tr>
           <th>Nom</th>
           <th>Impact Environnemental</th>
+          <th>Type Education Technology</th>
+
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let technologie of technologies">
           <td>{{ technologie.nom }}</td>
           <td>{{ technologie.impactEnvironnemental }}</td>
+          <td>{{ technologie.type}}</td>
+
         </tr>
       </tbody>
     </table>

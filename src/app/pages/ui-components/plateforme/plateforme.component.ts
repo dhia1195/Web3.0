@@ -9,7 +9,8 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./plateforme.component.scss']
 })
 export class PlateformeComponent {
-  
+  type = 'git'; // This will make "GitHub" the default visible option
+
   plateformes: any[] = [];
   selectedPlateforme: any = null; 
   isModalOpen: boolean = false; 
@@ -30,6 +31,19 @@ export class PlateformeComponent {
       }
     );
   }
+  getPlateformeTypeLabel(type: string): string {
+    if (type === 'http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#classroom') {
+      return 'Classroom';
+    } else if (type === 'http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#git') {
+      return 'Github';
+    } else if (type === 'http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#teams') {
+      return 'Teams';
+    } else if (type === 'http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#moodle') {
+      return 'Moodle';
+    }
+    return 'Unknown Type'; // Default if no match
+  }
+  
   addPlateforme(form: NgForm) {
     const newPlateforme = form.value;
     this.plateformeService.addPlateforme(newPlateforme).subscribe(

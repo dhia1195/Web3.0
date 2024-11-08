@@ -30,7 +30,11 @@ export const navItems: NavItem[] = [
   {
     displayName: 'activite-educative',
     iconName: 'school',
-    route: '/ui-components/activite-educative',
+    route: '/ui-components/activite-educative',},
+    {
+    displayName: 'Methodes',
+    iconName: 'list',
+    route: '/ui-components/methode',
   },
   {
     displayName: 'Technologies d` Education',

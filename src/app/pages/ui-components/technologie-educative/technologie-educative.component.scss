@@ -1,41 +1,40 @@
 .plateforme-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+    max-width: 1000px; /* Increase width */
+    padding: 30px; /* Add more padding */
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   
     .section-title {
-      font-size: 24px;
+      font-size: 28px; /* Larger title font */
       font-weight: bold;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       text-align: center;
     }
   
     .add-title {
-      color: #0056b3; /* Blue color for the 'Add' section title */
+      color: #0056b3;
     }
   
     .list-title {
-      color: #28a745; /* Green color for the 'List' section title */
+      color: #28a745;
     }
   
     .form-group {
-      margin-bottom: 15px;
+      margin-bottom: 20px; /* Increase spacing between form groups */
   
       label {
-        font-size: 16px;
+        font-size: 18px; /* Increase font size for labels */
         font-weight: 600;
         display: block;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
       }
   
       .form-control {
         width: 100%;
-        padding: 10px;
-        font-size: 16px;
-        border-radius: 4px;
+        padding: 12px; /* Increase padding for inputs */
+        font-size: 18px; /* Larger input text */
+        border-radius: 6px; /* Slightly larger border radius */
         border: 1px solid #ccc;
         transition: border-color 0.3s;
   
@@ -49,10 +48,10 @@
     button[type='submit'] {
       background-color: #0056b3;
       color: white;
-      padding: 10px 20px;
-      font-size: 16px;
+      padding: 12px 24px; /* Larger button padding */
+      font-size: 18px; /* Larger button font size */
       border: none;
-      border-radius: 4px;
+      border-radius: 6px;
       cursor: pointer;
       transition: background-color 0.3s;
   
@@ -63,12 +62,13 @@
   
     table {
       width: 100%;
-      margin-top: 20px;
+      margin-top: 25px; /* Slightly more space above table */
       border-collapse: collapse;
   
       th,
       td {
-        padding: 12px;
+        padding: 14px; /* Increase table cell padding */
+        font-size: 18px; /* Larger font for table content */
         text-align: left;
         border-bottom: 1px solid #ddd;
       }

@@ -1,48 +1,47 @@
-<div class="plateforme-container">
-    <h2 class="section-title add-title">Add a New Plateforme</h2>
-    <form #plateformeForm="ngForm" (ngSubmit)="addPlateforme(plateformeForm)">
+<div class="methode-container">
+    <!-- Form for adding a new plateforme -->
+    <h2 class="section-title add-title">Add a New Methode</h2>
+    <form #methodeForm="ngForm" (ngSubmit)="addMethode(methodeForm)">
       <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" ngModel required class="form-control" placeholder="Enter plateforme name" />
+        <label for="nom">Nom:</label>
+        <input type="text" id="nom" name="nom" ngModel required class="form-control" placeholder="Enter Methode name" />
       </div>
       <div class="form-group">
-        <label for="subscriptionType">Subscription Type:</label>
-        <input type="text" id="subscriptionType" name="subscriptionType" ngModel required class="form-control" placeholder="Enter subscription type" />
+        <label for="duree">Duree:</label>
+        <input type="text" id="duree" name="duree" ngModel required class="form-control" placeholder="Enter duree" />
       </div>
       <div class="form-group">
-        <label for="type">Plateforme Type:</label>
+        <label for="type">Methode Type:</label>
         <select id="type" name="type" [(ngModel)]="type" required class="form-control">
-          <option value="classroom">Classroom</option>
-          <option value="git">GitHub</option>
-          <option value="moodle">Moodle</option>
-          <option value="teams">Teams</option>
+          <option value="apprentissage_par_projet">Apprentissage par projet</option>
+          <option value="classe_inversee">Classe Inversée</option>
+          <option value="enseignement_differencie">Enseignement differencié</option>
+          <option value="jeu_educatif">Jeu Educatif</option>
         </select>
       </div>
-      
-      <button type="submit" class="btn btn-primary">Add Plateforme</button>
+
+      <button type="submit" class="btn btn-primary">Add Methode</button>
     </form>
-    
   
     <!-- Display list of plateformes -->
-    <h2 class="section-title list-title">Plateformes List</h2>
+    <h2 class="section-title list-title">Liste des methodes d'enseignements</h2>
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Subscription Type</th>
+          <th>Nom</th>
+          <th>Duree</th>
           <th>Type</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let plateforme of plateformes">
-          <td>{{ plateforme.name }}</td>
-          <td>{{ plateforme.subscriptionType }}</td>
-          <td>{{ getPlateformeTypeLabel(plateforme.type) }}</td>
-
+        <tr *ngFor="let methode of methodes">
+          <td>{{ methode.nom }}</td>
+          <td>{{ methode.duree }}</td>
+          <td>{{ getMethodeTypeLabel(methode.type) }}</td>
           <td>
-            <button class="btn btn-warning" (click)="modifyPlateforme(plateforme.id, plateforme)">Modify</button>
-            <button class="btn btn-danger" (click)="deletePlateforme(plateforme.id)">Delete</button>
+            <button class="btn btn-warning" (click)="modifyMethode(methode.id, methode)">Modify</button>
+            <button class="btn btn-danger" (click)="deleteMethode(methode.id)">Delete</button>
           </td>
         </tr>
       </tbody>
@@ -51,18 +50,18 @@
     <!-- Modal for editing plateforme -->
     <div *ngIf="isModalOpen" class="modal-overlay">
       <div class="modal">
-        <h2 class="modal-title">Modify Plateforme</h2>
-        <form (ngSubmit)="updatePlateforme()">
+        <h2 class="modal-title">Modify Methode</h2>
+        <form (ngSubmit)="updateMethode()">
           <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" [(ngModel)]="selectedPlateforme.name" required class="form-control" />
+            <label for="nom">Name:</label>
+            <input type="text" id="nom" name="nom" [(ngModel)]="selectedMethode.nom" required class="form-control" />
           </div>
           <div class="form-group">
-            <label for="subscriptionType">Subscription Type:</label>
-            <input type="text" id="subscriptionType" name="subscriptionType" [(ngModel)]="selectedPlateforme.subscriptionType" required class="form-control" />
+            <label for="duree">Subscription Type:</label>
+            <input type="text" id="duree" name="duree" [(ngModel)]="selectedMethode.duree" required class="form-control" />
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-success">Update Plateforme</button>
+            <button type="submit" class="btn btn-success">Update</button>
             <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
           </div>
         </form>
@@ -72,7 +71,7 @@
   
   <style>
     /* Main container */
-.plateforme-container {
+.methode-container {
   max-width: 1200px; /* Increased width to make it wider */
   margin: 30px auto;
   padding: 30px;
@@ -83,7 +82,7 @@
   width: 100%; /* Ensures full width within the max-width constraint */
 }
 
-.plateforme-container:hover {
+.methode-container:hover {
   transform: scale(1.02);
 }
 
