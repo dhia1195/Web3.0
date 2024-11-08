@@ -7,11 +7,38 @@
         <mat-card-content class="p-32">
           <div class="text-center">
             <a [routerLink]="['/dashboard']">
-              <img
-                src="./assets/images/logos/dark-logo.svg"
-                class="align-middle m-2"
-                alt="logo"
-              />
+              <div class="branding">
+                <a href="/" class="branding-link">
+                  <img
+                    src="./assets/images/logos/Pasted image1.png"
+                    class="logo-large align-middle m-2"
+                    alt="logo"
+                  />
+                  <span class="branding-title">Infinity</span>
+                </a>
+              </div>
+<style>/* Make the logo bigger */
+  .logo-large {
+    width: 150px; /* Increase the size of the logo */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Space between the logo and the title */
+  }
+  
+  /* Styling for the title next to the logo */
+  .branding-title {
+    font-size: 28px; /* Increase the font size for better visibility */
+    font-weight: bold; /* Make the title bold */
+    color: #333; /* Adjust the color */
+    vertical-align: middle; /* Align vertically with the logo */
+  }
+  
+  /* Optional: Style the link to remove underlining */
+  .branding-link {
+    text-decoration: none; /* Remove underline from link */
+    display: flex; /* Align logo and title horizontally */
+    align-items: center; /* Vertically align the content */
+  }
+  </style>              
             </a>
           </div>
 
