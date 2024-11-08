@@ -1,5 +1,6 @@
 <rdf:RDF
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/"
     xmlns="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
@@ -144,15 +145,15 @@
       <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Personne"/>
     </rdfs:subClassOf>
   </owl:Class>
-  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Evaluation">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Education"/>
-  </owl:Class>
   <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#presentiel">
     <rdfs:subClassOf>
       <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Pedagogie"/>
     </rdfs:subClassOf>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
     <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#presentiel"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Evaluation">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Education"/>
   </owl:Class>
   <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#pratique">
     <rdfs:subClassOf>
@@ -311,6 +312,10 @@
   <owl:Class rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#devoir">
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#activite_educative"/>
   </owl:Class>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#propose">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Cours"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Institution"/>
+  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#est_evalue_par">
     <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Evaluation"/>
     <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#etudiant"/>
@@ -318,10 +323,6 @@
   <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#animePar">
     <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#activite_educative"/>
     <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#enseignant"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#propose">
-    <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Cours"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Institution"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#participe_à">
     <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Cours"/>
@@ -387,13 +388,13 @@
     <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Personne"/>
     <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#plateforme"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#appliquePédagogie">
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Cours"/>
-    <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Pedagogie"/>
-  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#appliqueMéthode">
     <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Institution"/>
     <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Méthode_d&apos;enseignement"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#appliquePédagogie">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Cours"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Pedagogie"/>
   </owl:ObjectProperty>
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#age">
     <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Personne"/>
@@ -419,13 +420,13 @@
     <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#plateforme"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#nomActivite">
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#activite_educative"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-  </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#nbQuestions">
     <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#examen"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#nomActivite">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#activite_educative"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#dureeEvaluation">
     <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Evaluation"/>
@@ -454,13 +455,13 @@
     <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Institution"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#dureeAE">
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#activite_educative"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-  </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#impactEnvironnemental">
     <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Technologie_Educative"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#dureeAE">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#activite_educative"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#difficulte">
     <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Niveau_d&apos;education"/>
@@ -486,6 +487,10 @@
     <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#activite_educative"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
   </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#descriptionEvaluation">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Evaluation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#efficacite">
     <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Méthode_d&apos;enseignement"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
@@ -493,10 +498,6 @@
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#note">
     <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Evaluation"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#descriptionEvaluation">
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Evaluation"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#adresseInstitution">
     <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Institution"/>
@@ -558,68 +559,11 @@
   <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Enseignement_differencie">
     <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Enseignement_différencié"/>
   </owl:NamedIndividual>
-  <Methode rdf:about="file:///C:/Users/mehdi/Documents/Web3.0B/Methode_3e7cdf09-8d31-47cb-bfce-2976a16df9e5">
-    <type>jeu_educatif</type>
-    <duree>1 heure</duree>
-    <nom>jeux interactif</nom>
-  </Methode>
   <git rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_77b85e85-c543-468b-bd87-ca97c20dbbbe"/>
-  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_2">
-    <dateDeNaissance>20/05/1975</dateDeNaissance>
-    <nom>Meher</nom>
-    <age>49</age>
-    <est_parent_de>
-      <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_1">
-        <dateDeNaissance>15/03/2001</dateDeNaissance>
-        <nom>Mehdi</nom>
-        <age>23</age>
-        <participe_à>
-          <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#django">
-            <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#pratique"/>
-            <duréeDuCours>30H</duréeDuCours>
-            <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#presentiel"/>
-          </owl:NamedIndividual>
-        </participe_à>
-        <est_evalue_par>
-          <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_3">
-            <age>35</age>
-            <nom>mohamed</nom>
-            <enseigne rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#django"/>
-            <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#enseignant"/>
-          </owl:NamedIndividual>
-        </est_evalue_par>
-        <appartient_à>
-          <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#institu">
-            <nom>Esprit</nom>
-            <propose rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Plateforme1"/>
-            <appartient_à>
-              <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#apprentissage_par_projet">
-                <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Apprentissage_par_projet"/>
-              </owl:NamedIndividual>
-            </appartient_à>
-            <appartient_à>
-              <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#sup">
-                <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#superieur"/>
-              </owl:NamedIndividual>
-            </appartient_à>
-            <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#universite"/>
-          </owl:NamedIndividual>
-        </appartient_à>
-        <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#etudiant"/>
-      </owl:NamedIndividual>
-    </est_parent_de>
-    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#parent"/>
-  </owl:NamedIndividual>
-  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#physique">
-    <credits>4</credits>
-    <duree>1h</duree>
-    <concernantCours>
-      <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#cour_physique">
-        <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#pratique"/>
-      </owl:NamedIndividual>
-    </concernantCours>
-    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#devoir"/>
-  </owl:NamedIndividual>
+  <rdf:Description rdf:about="http://rescuefood.org/ontology/Technologie_Educative_519a4003-678f-407f-94bc-406803c15d62">
+    <nom>Mobile Learning Application</nom>
+    <impactEnvironnemental>Low carbon footprint due to cloud-based services.</impactEnvironnemental>
+  </rdf:Description>
   <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_9">
     <nom>mohamed saadi</nom>
     <age>50</age>
@@ -630,7 +574,20 @@
         <niveau>universite</niveau>
         <dateDeNaissance>22/04/2000</dateDeNaissance>
         <nom>dhia</nom>
-        <enseigne rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_3"/>
+        <enseigne>
+          <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_3">
+            <age>35</age>
+            <nom>mohamed</nom>
+            <enseigne>
+              <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#django">
+                <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#pratique"/>
+                <duréeDuCours>30H</duréeDuCours>
+                <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#presentiel"/>
+              </owl:NamedIndividual>
+            </enseigne>
+            <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#enseignant"/>
+          </owl:NamedIndividual>
+        </enseigne>
         <appartient_à>
           <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#institut_1">
             <nom>Universite centrale</nom>
@@ -639,7 +596,11 @@
                 <nom>plateforme uc</nom>
               </owl:NamedIndividual>
             </propose>
-            <appartient_à rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#sup"/>
+            <appartient_à>
+              <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#sup">
+                <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#superieur"/>
+              </owl:NamedIndividual>
+            </appartient_à>
             <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#universite"/>
           </owl:NamedIndividual>
         </appartient_à>
@@ -664,10 +625,19 @@
     </est_parent_de>
     <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#parent"/>
   </owl:NamedIndividual>
-  <Technologie_Educative rdf:about="http://rescuefood.org/ontology/Technologie_Educative_93c26daa-2644-48ba-89fe-cc1d954091b4">
-    <nom>dd</nom>
+  <Evaluation rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#4c1af890-b9cd-461a-ac79-e4ba0da27bf0">
+    <note rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >17.5</note>
+    <dureeEvaluation rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >90</dureeEvaluation>
+    <descriptionEvaluation>This is a sample description for the evaluation.</descriptionEvaluation>
+    <dateEvaluation rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"
+    >2024-11-07T10:00:00</dateEvaluation>
+  </Evaluation>
+  <rdf:Description rdf:about="http://rescuefood.org/ontology/Technologie_Educative_93c26daa-2644-48ba-89fe-cc1d954091b4">
     <impactEnvironnemental>dd</impactEnvironnemental>
-  </Technologie_Educative>
+    <nom>dd</nom>
+  </rdf:Description>
   <rdf:Description rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_4829f155-79c7-408a-84c7-21a4841e03f8">
     <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#"/>
     <name></name>
@@ -678,10 +648,6 @@
     <subscriptionType>2ans</subscriptionType>
     <type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#git"/>
   </moodle>
-  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#technologie_educ1">
-    <nom>Esprit_Plat</nom>
-    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Technologie_Educative"/>
-  </owl:NamedIndividual>
   <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#cours_java">
     <duréeDuCours>30</duréeDuCours>
     <utilise rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#application_mobile"/>
@@ -718,67 +684,55 @@
     </est_evalue_par>
     <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#examen"/>
   </owl:NamedIndividual>
-  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_4">
-    <dateDeNaissance>22/04/1984</dateDeNaissance>
-    <nom></nom>
-    <age>40</age>
-    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#administrateur"/>
-  </owl:NamedIndividual>
-  <Methode rdf:about="file:///C:/Users/mehdi/Documents/Web3.0B/Methode_8b9e1757-0651-417e-b68f-1fc83cb8d5fa">
-    <type>jeux_educatif</type>
-    <duree>1 heure</duree>
-    <nom>jeux interactif</nom>
-  </Methode>
+  <tableau_interactif rdf:about="http://rescuefood.org/ontology/Technologie_Educative_d17d95ef-1001-4d97-b727-79a5456b6c63">
+    <nom>Interactive Whiteboard</nom>
+    <impactEnvironnemental>Low carbon footprint due to cloud-based services.</impactEnvironnemental>
+  </tableau_interactif>
   <Plateforme rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Plateforme_5b834949-aad2-435f-b384-4f8a82aca73b">
     <subscriptionType>sss</subscriptionType>
     <name>sss</name>
   </Plateforme>
-  <Plateforme rdf:about="file:///C:/Users/dhia-/Desktop/Semantic_Web_Project/WebSemantiqueBack/Plateforme_1bb0a961-7790-49d1-b3ab-6e6ce9080e1a"/>
-  <null rdf:about="file:///C:/Users/mehdi/Documents/Web3.0B/Methode_2bd834c7-5ede-4e31-8a28-1b16d332b667">
-    <nom>methode2</nom>
-    <duree>1Heure</duree>
-  </null>
-  <rdf:Description rdf:about="file:///C:/Users/mehdi/Documents/Web3.0B/c4b2dde9-7832-4985-af4d-1e66537a21af">
-    <nom>methode1</nom>
-    <duree>1 heure</duree>
-    <type rdf:resource="file:///C:/Users/mehdi/Documents/Web3.0B/"/>
+  <Cours rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#15da4d01-fa6c-4eab-980e-f75265d6a3a7">
+    <prerequis>Basic knowledge of web technologies.</prerequis>
+    <objectifDuCours>Understand the basics of RDF and SPARQL.</objectifDuCours>
+    <nomDuCours>Introduction to Semantic Web</nomDuCours>
+    <heuresEnseignement rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >40</heuresEnseignement>
+    <descriptionCours>dhia.</descriptionCours>
+    <duréeDuCours rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >100</duréeDuCours>
+    <credits rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >10</credits>
+  </Cours>
+  <rdf:Description rdf:about="http://rescuefood.org/ontology/Technologie_Educative_83ff14e8-5b62-4fc8-a630-e74c5cb78070">
+    <impactEnvironnemental>Low carbon footprint due to cloud-based services.</impactEnvironnemental>
+    <nom>Mobile Learning Application</nom>
   </rdf:Description>
-  <apprentissage_par_projet rdf:about="file:///C:/Users/mehdi/Documents/Web3.0B/Methode_d8b75750-8ba6-4ef2-a7e7-680d7764bc92">
-    <type rdf:resource="file:///C:/Users/mehdi/Documents/Web3.0B/"/>
-  </apprentissage_par_projet>
-  <git rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_e4090e81-9faa-4b5a-9f65-310219561266">
-    <name>githubs</name>
-    <subscriptionType>2ans</subscriptionType>
+  <Technologie_Educative rdf:about="http://rescuefood.org/ontology/Technologie_Educative_9c62a1df-6132-4785-a2a1-b2c7e34b848c">
+    <impactEnvironnemental>Low carbon footprint due to cloud-based services.</impactEnvironnemental>
+    <nom>Mobile Learning Application</nom>
+  </Technologie_Educative>
+  <rdf:Description rdf:about="http://rescuefood.org/ontology/Technologie_Educative_6737d6c1-0b0a-4cd2-95b7-28820d047612">
+    <impactEnvironnemental>Low carbon footprint due to cloud-based services.</impactEnvironnemental>
+    <nom>Mobile Learning Application</nom>
+  </rdf:Description>
+  <git rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_9d4abeca-6e63-4221-8bb0-050657043c8d">
+    <name>github</name>
+    <subscriptionType>1ans</subscriptionType>
+    <type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#git"/>
   </git>
-  <rdf:Description rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Plateforme_1bb0a961-7790-49d1-b3ab-6e6ce9080e1a">
-    <subscriptionType>Git</subscriptionType>
-    <name>GitHub Updatedssssss</name>
+  <rdf:Description rdf:about="http://rescuefood.org/ontology/Technologie_Educative_3dd9466f-6b0d-45ed-b3b9-f0ebcbac40e1">
+    <impactEnvironnemental>Low carbon footprint due to cloud-based services.</impactEnvironnemental>
+    <nom>null</nom>
+    <typeClasse>null</typeClasse>
   </rdf:Description>
-  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#ecole_1">
-    <nom>ibn manthour</nom>
-    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#ecole"/>
-  </owl:NamedIndividual>
-  <Plateforme rdf:about="file:///C:/Users/dhia-/Desktop/Semantic_Web_Project/WebSemantiqueBack/Plateforme_91550efe-cfe5-4bde-8e92-768462072f77"/>
-  <Plateforme rdf:about="file:///C:/Users/dhia-/Desktop/Semantic_Web_Project/WebSemantiqueBack/Plateforme_dfbfb706-aa21-4260-8008-418d9073eea0">
-    <name>sss</name>
-    <subscriptionType>null</subscriptionType>
-  </Plateforme>
-  <classroom rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_ce3ae4e6-776b-4117-aaa0-23cee22f4a6e"/>
   <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#classe_inverse">
     <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Classe_inversee"/>
   </owl:NamedIndividual>
-  <Methode rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Methode_53ef98d6-a618-4d18-a5e3-497a1ad3ffc4">
-    <duree>ddd</duree>
-    <nom>dd</nom>
-  </Methode>
-  <jeu_educatif rdf:about="file:///C:/Users/mehdi/Documents/Web3.0B/Methode_9d3067c5-d175-4f41-a260-2fdf6cb13bba">
-    <type>jeu_educatif</type>
-    <duree>1 heure</duree>
-  </jeu_educatif>
-  <classroom rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_53ee1d8e-60e9-4f97-989b-cb5d7c3428d1">
-    <name>moodles</name>
-    <subscriptionType>1ans</subscriptionType>
-  </classroom>
+  <tableau_interactif rdf:about="http://rescuefood.org/ontology/Technologie_Educative_0c285ed8-8fe7-4e5a-9445-74cb05dca97e">
+    <nom>Interactive Whiteboard</nom>
+    <impactEnvironnemental>Low carbon footprint due to cloud-based services.</impactEnvironnemental>
+  </tableau_interactif>
   <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_11">
     <age>50</age>
     <dateDeNaissance>11/05/1974</dateDeNaissance>
@@ -786,6 +740,11 @@
     <est_parent_de rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_10"/>
     <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#parent"/>
   </owl:NamedIndividual>
+  <rdf:Description rdf:about="http://rescuefood.org/ontology/Technologie_Educative_aa7052d9-a22c-4968-b599-d40594bc7b75">
+    <nom>Mobile Learning Application</nom>
+    <subClassOf rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#application_mobile"/>
+    <impactEnvironnemental>Low carbon footprint due to cloud-based services.</impactEnvironnemental>
+  </rdf:Description>
   <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#projet_web3.0">
     <credits>8</credits>
     <objectif>realiser le projet de pidev
@@ -793,24 +752,6 @@
     <organisePar rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_12"/>
     <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#projet"/>
   </owl:NamedIndividual>
-  <jeu_educatif rdf:about="file:///C:/Users/mehdi/Documents/Web3.0B/Methode_c4b2dde9-7832-4985-af4d-1e66537a21af">
-    <type>
-      <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#jeu_educatif">
-        <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#jeu_educaif"/>
-      </owl:NamedIndividual>
-    </type>
-  </jeu_educatif>
-  <git rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_c3201f8a-9d7e-496f-899d-08a14a5c933c"/>
-  <Methode rdf:about="file:///C:/Users/mehdi/Documents/Web3.0B/Methode_54d1dbf5-2252-4a45-a5d2-ddcd0a83a150">
-    <type>jeux_educaif</type>
-    <duree>1 heure</duree>
-    <nom>jeux interactif</nom>
-  </Methode>
-  <Methode rdf:about="file:///C:/Users/mehdi/Documents/Web3.0B/Methode_2200e8d5-6ad8-425f-8b43-a37cc3587ab6">
-    <type>jeu_educatif</type>
-    <duree>1 heure</duree>
-    <nom>jeux interactif</nom>
-  </Methode>
   <rdf:Description rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Plateforme_f2f9124c-f9b7-4bde-8b69-96987699e15c">
     <type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#teams"/>
     <subscriptionType>2ans</subscriptionType>
@@ -824,15 +765,183 @@
     <subscriptionType>git</subscriptionType>
     <name>github</name>
   </Plateforme>
+  <tableau_interactif rdf:about="http://rescuefood.org/ontology/Technologie_Educative_ecf7a813-e864-4da9-9cde-6240c32010fb">
+    <nom>Interactive Whiteboard</nom>
+    <impactEnvironnemental>Low carbon footprint due to cloud-based services.</impactEnvironnemental>
+  </tableau_interactif>
   <teams rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_09f3d173-03b9-435b-9018-e2ef798da9d3">
     <name>teams</name>
     <subscriptionType>1ans</subscriptionType>
   </teams>
+  <j.0:null rdf:about="http://rescuefood.org/ontology/Technologie_Educative_fab14270-2572-46bd-9cd5-d918d6851fb5">
+    <nom>Mobile Learning Application</nom>
+    <impactEnvironnemental>Low carbon footprint due to cloud-based services.</impactEnvironnemental>
+  </j.0:null>
+  <rdf:Description rdf:about="http://rescuefood.org/ontology/Technologie_Educative_576c2007-db93-426a-8000-1b443489cd74">
+    <impactEnvironnemental>Low carbon footprint due to cloud-based services.</impactEnvironnemental>
+    <nom>Mobile Learning Application</nom>
+  </rdf:Description>
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_2">
+    <dateDeNaissance>20/05/1975</dateDeNaissance>
+    <nom>Meher</nom>
+    <age>49</age>
+    <est_parent_de>
+      <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_1">
+        <dateDeNaissance>15/03/2001</dateDeNaissance>
+        <nom>Mehdi</nom>
+        <age>23</age>
+        <participe_à rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#django"/>
+        <est_evalue_par rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_3"/>
+        <appartient_à>
+          <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#institu">
+            <nom>Esprit</nom>
+            <propose rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Plateforme1"/>
+            <appartient_à>
+              <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#apprentissage_par_projet">
+                <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Apprentissage_par_projet"/>
+              </owl:NamedIndividual>
+            </appartient_à>
+            <appartient_à rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#sup"/>
+            <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#universite"/>
+          </owl:NamedIndividual>
+        </appartient_à>
+        <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#etudiant"/>
+      </owl:NamedIndividual>
+    </est_parent_de>
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#parent"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#physique">
+    <credits>4</credits>
+    <duree>1h</duree>
+    <concernantCours>
+      <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#cour_physique">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#pratique"/>
+      </owl:NamedIndividual>
+    </concernantCours>
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#devoir"/>
+  </owl:NamedIndividual>
+  <rdf:Description rdf:about="http://rescuefood.org/ontology/Technologie_Educative_8844d720-1d76-4a02-bac1-da325da2680d">
+    <nom>Mobile Learning Application</nom>
+    <impactEnvironnemental>Low carbon footprint due to cloud-based services.</impactEnvironnemental>
+  </rdf:Description>
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#technologie_educ1">
+    <nom>Esprit_Plat</nom>
+  </owl:NamedIndividual>
+  <Cours rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#ccefc1b0-77df-4b97-b7ef-0c819f0de66a">
+    <credits rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >10</credits>
+    <duréeDuCours rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >100</duréeDuCours>
+    <descriptionCours>dhia.</descriptionCours>
+    <heuresEnseignement rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >40</heuresEnseignement>
+    <nomDuCours>Introduction to Semantic Web</nomDuCours>
+    <objectifDuCours>Understand the basics of RDF and SPARQL.</objectifDuCours>
+    <prerequis>Basic knowledge of web technologies.</prerequis>
+  </Cours>
+  <rdf:Description rdf:about="http://rescuefood.org/ontology/Technologie_Educative_75004452-c54a-46e1-bfb7-9f0cc30ecbfb">
+    <impactEnvironnemental>Low carbon footprint due to cloud-based services.</impactEnvironnemental>
+    <nom>Mobile Learning Application</nom>
+  </rdf:Description>
+  <Technologie_Educative rdf:about="http://rescuefood.org/ontology/Technologie_Educative_2939db43-f1d4-4ab1-bced-31712de9aae8">
+    <impactEnvironnemental>Esprit</impactEnvironnemental>
+    <nom>example</nom>
+  </Technologie_Educative>
+  <moodle rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_2becc7b3-d511-4c6d-a05e-34c97b93e77b">
+    <name>test</name>
+    <subscriptionType>2ans</subscriptionType>
+  </moodle>
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_4">
+    <dateDeNaissance>22/04/1984</dateDeNaissance>
+    <nom></nom>
+    <age>40</age>
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#administrateur"/>
+  </owl:NamedIndividual>
+  <Plateforme rdf:about="file:///C:/Users/dhia-/Desktop/Semantic_Web_Project/WebSemantiqueBack/Plateforme_1bb0a961-7790-49d1-b3ab-6e6ce9080e1a"/>
+  <git rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_e4090e81-9faa-4b5a-9f65-310219561266">
+    <type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#git"/>
+  </git>
+  <Cours rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#73de7f8b-e280-47f6-bcda-21e134c2fce6">
+    <prerequis>Basic knowledge of web technologies.</prerequis>
+    <objectifDuCours>Understand the basics of RDF and SPARQL.</objectifDuCours>
+    <nomDuCours>Introduction to Semantic Web</nomDuCours>
+    <heuresEnseignement rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >40</heuresEnseignement>
+    <descriptionCours>dhia.</descriptionCours>
+    <duréeDuCours rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >100</duréeDuCours>
+    <credits rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >10</credits>
+  </Cours>
+  <git rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_ea1da6cb-095c-4724-9560-c10c76671649">
+    <type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#git"/>
+  </git>
+  <rdf:Description rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Plateforme_1bb0a961-7790-49d1-b3ab-6e6ce9080e1a">
+    <subscriptionType>Git</subscriptionType>
+    <name>GitHub Updatedssssss</name>
+  </rdf:Description>
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#ecole_1">
+    <nom>ibn manthour</nom>
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#ecole"/>
+  </owl:NamedIndividual>
+  <Plateforme rdf:about="file:///C:/Users/dhia-/Desktop/Semantic_Web_Project/WebSemantiqueBack/Plateforme_91550efe-cfe5-4bde-8e92-768462072f77"/>
+  <application_mobile rdf:about="http://rescuefood.org/ontology/Technologie_Educative_244925b7-8c77-4601-9272-be87454f0dc8">
+    <nom>Mobile Learning Application</nom>
+    <impactEnvironnemental>Low carbon footprint due to cloud-based services.</impactEnvironnemental>
+  </application_mobile>
+  <Plateforme rdf:about="file:///C:/Users/dhia-/Desktop/Semantic_Web_Project/WebSemantiqueBack/Plateforme_dfbfb706-aa21-4260-8008-418d9073eea0">
+    <name>sss</name>
+    <subscriptionType>null</subscriptionType>
+  </Plateforme>
+  <Cours rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#e7550d43-f7ed-4011-8894-3ed80c4e12ec">
+    <prerequis>Basic knowledge of web technologies.</prerequis>
+    <objectifDuCours>Understand the basics of RDF and SPARQL.</objectifDuCours>
+    <nomDuCours>Introduction to Semantic Web</nomDuCours>
+    <heuresEnseignement rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >40</heuresEnseignement>
+    <descriptionCours>dhia.</descriptionCours>
+    <duréeDuCours rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >100</duréeDuCours>
+    <credits rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >10</credits>
+  </Cours>
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#jeu_educatif">
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#jeu_educaif"/>
+  </owl:NamedIndividual>
+  <classroom rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_ce3ae4e6-776b-4117-aaa0-23cee22f4a6e"/>
+  <Methode rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Methode_53ef98d6-a618-4d18-a5e3-497a1ad3ffc4">
+    <duree>ddd</duree>
+    <nom>dd</nom>
+  </Methode>
+  <classroom rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_53ee1d8e-60e9-4f97-989b-cb5d7c3428d1">
+    <name>moodles</name>
+    <subscriptionType>1ans</subscriptionType>
+  </classroom>
+  <rdf:Description rdf:about="http://rescuefood.org/ontology/Technologie_Educative_a764abce-c955-4eb9-aa7c-08138272c2b1">
+    <impactEnvironnemental>Esprit</impactEnvironnemental>
+    <nom>france</nom>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://rescuefood.org/ontology/Technologie_Educative_9c0fbe61-59ed-4607-b755-396449ae476e">
+    <nom>Mobile Learning Application</nom>
+    <impactEnvironnemental>Low carbon footprint due to cloud-based services.</impactEnvironnemental>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://rescuefood.org/ontology/Technologie_Educative_fb94d55e-f839-4bfb-9dcc-e055018db735">
+    <nom>opensource</nom>
+    <impactEnvironnemental>Esprit</impactEnvironnemental>
+  </rdf:Description>
+  <git rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_c3201f8a-9d7e-496f-899d-08a14a5c933c"/>
+  <Institution rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#a765b656-36df-4a3b-a530-837902e00c52">
+    <adresseInstitution>1234 Sample Street, City, Country</adresseInstitution>
+    <nomInstitution>Sample University</nomInstitution>
+    <numeroContact>+1234567890</numeroContact>
+    <typeInstitution>University</typeInstitution>
+  </Institution>
   <moodle rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_70b70fa7-5d3b-4cd8-8d2f-835381de2bc2"/>
-  <jeu_educatif rdf:about="file:///C:/Users/mehdi/Documents/Web3.0B/Methode_087e5c4f-69fc-4608-b5f8-fbd643017d2f">
-    <duree>1 heure</duree>
-    <type>jeu_educatif</type>
-  </jeu_educatif>
+  <rdf:Description rdf:about="http://rescuefood.org/ontology/Technologie_Educative_e0e7bc1f-9a39-4eb2-acf3-be386dc202e0">
+    <impactEnvironnemental>Low carbon footprint due to cloud-based services.</impactEnvironnemental>
+    <nom>null</nom>
+    <typeClasse>null</typeClasse>
+  </rdf:Description>
   <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_8">
     <age>35</age>
     <nom>azza mastouri</nom>

@@ -554,9 +554,11 @@
     <rdfs:domain rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#activite_educative"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
   </owl:DatatypeProperty>
+  <teams rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_008e0abc-6676-47c2-83ca-75ad8d507ff8"/>
   <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Enseignement_differencie">
     <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Enseignement_différencié"/>
   </owl:NamedIndividual>
+  <git rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_77b85e85-c543-468b-bd87-ca97c20dbbbe"/>
   <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_2">
     <dateDeNaissance>20/05/1975</dateDeNaissance>
     <nom>Meher</nom>
@@ -661,6 +663,16 @@
     <nom>dd</nom>
     <impactEnvironnemental>dd</impactEnvironnemental>
   </Technologie_Educative>
+  <rdf:Description rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_4829f155-79c7-408a-84c7-21a4841e03f8">
+    <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#"/>
+    <name></name>
+    <subscriptionType></subscriptionType>
+  </rdf:Description>
+  <moodle rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_f2f9124c-f9b7-4bde-8b69-96987699e15c">
+    <name>moodle</name>
+    <subscriptionType>2ans</subscriptionType>
+    <type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#git"/>
+  </moodle>
   <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#technologie_educ1">
     <nom>Esprit_Plat</nom>
     <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Technologie_Educative"/>
@@ -712,6 +724,10 @@
     <name>sss</name>
   </Plateforme>
   <Plateforme rdf:about="file:///C:/Users/dhia-/Desktop/Semantic_Web_Project/WebSemantiqueBack/Plateforme_1bb0a961-7790-49d1-b3ab-6e6ce9080e1a"/>
+  <git rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_e4090e81-9faa-4b5a-9f65-310219561266">
+    <name>githubs</name>
+    <subscriptionType>2ans</subscriptionType>
+  </git>
   <rdf:Description rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Plateforme_1bb0a961-7790-49d1-b3ab-6e6ce9080e1a">
     <subscriptionType>Git</subscriptionType>
     <name>GitHub Updatedssssss</name>
@@ -728,13 +744,42 @@
   <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#jeu_educatif">
     <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#jeu_educaif"/>
   </owl:NamedIndividual>
+  <Cours rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#b942507c-454a-4dec-8c02-49af824c2c84">
+    <prerequis>Basic knowledge of web technologies.</prerequis>
+    <objectifDuCours>Understand the basics of RDF and SPARQL.</objectifDuCours>
+    <nomDuCours>Introduction to Semantic Web</nomDuCours>
+    <heuresEnseignement rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >40</heuresEnseignement>
+    <descriptionCours>dhia.</descriptionCours>
+    <duréeDuCours rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >100</duréeDuCours>
+    <credits rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >10</credits>
+  </Cours>
+  <classroom rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_ce3ae4e6-776b-4117-aaa0-23cee22f4a6e"/>
+  <Cours rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#8854cf61-b636-4b6d-b2d5-c004bc3ab750">
+    <prerequis>Basic knowledge of web technologies.</prerequis>
+    <objectifDuCours>Understand the basics of RDF and SPARQL.</objectifDuCours>
+    <nomDuCours>Introduction to Semantic Web</nomDuCours>
+    <heuresEnseignement rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >40</heuresEnseignement>
+    <descriptionCours>This is a sample course description.</descriptionCours>
+    <duréeDuCours rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >30</duréeDuCours>
+    <credits rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >5</credits>
+  </Cours>
   <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#classe_inverse">
     <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Classe_inversee"/>
   </owl:NamedIndividual>
-  <Personne rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#dd58b011-ac34-457e-9d10-f817acdd6da7">
-    <age rdf:datatype="http://www.w3.org/2001/XMLSchema#int">20</age>
-    <nom>dhia</nom>
-  </Personne>
+  <Methode rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Methode_53ef98d6-a618-4d18-a5e3-497a1ad3ffc4">
+    <duree>ddd</duree>
+    <nom>dd</nom>
+  </Methode>
+  <classroom rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_53ee1d8e-60e9-4f97-989b-cb5d7c3428d1">
+    <name>moodles</name>
+    <subscriptionType>1ans</subscriptionType>
+  </classroom>
   <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_11">
     <age>50</age>
     <dateDeNaissance>11/05/1974</dateDeNaissance>
@@ -742,10 +787,6 @@
     <est_parent_de rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_10"/>
     <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#parent"/>
   </owl:NamedIndividual>
-  <Personne rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#a2572a32-e2e2-4760-860c-d55a3140de00">
-    <age rdf:datatype="http://www.w3.org/2001/XMLSchema#int">20</age>
-    <nom></nom>
-  </Personne>
   <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#projet_web3.0">
     <credits>8</credits>
     <objectif>realiser le projet de pidev
@@ -753,6 +794,12 @@
     <organisePar rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_12"/>
     <rdf:type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#projet"/>
   </owl:NamedIndividual>
+  <git rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_c3201f8a-9d7e-496f-899d-08a14a5c933c"/>
+  <rdf:Description rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Plateforme_f2f9124c-f9b7-4bde-8b69-96987699e15c">
+    <type rdf:resource="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#teams"/>
+    <subscriptionType>2ans</subscriptionType>
+    <name>moodle</name>
+  </rdf:Description>
   <Plateforme rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#Plateforme_0adca02d-41f4-40db-9a8c-08d7b60d1c61">
     <subscriptionType>sss</subscriptionType>
     <name>sss</name>
@@ -761,6 +808,11 @@
     <subscriptionType>git</subscriptionType>
     <name>github</name>
   </Plateforme>
+  <teams rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_09f3d173-03b9-435b-9018-e2ef798da9d3">
+    <name>teams</name>
+    <subscriptionType>1ans</subscriptionType>
+  </teams>
+  <moodle rdf:about="file:///home/beast/Documents/Spring%20Boot/Web3.0/WebSemantiqueBack/Plateforme_70b70fa7-5d3b-4cd8-8d2f-835381de2bc2"/>
   <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emnar/ontologies/2024/9/untitled-ontology-7#indiv_8">
     <age>35</age>
     <nom>azza mastouri</nom>
