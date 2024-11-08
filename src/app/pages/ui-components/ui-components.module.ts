@@ -18,6 +18,7 @@ import { AppMenuComponent } from './menu/menu.component';
 import { AppTooltipsComponent } from './tooltips/tooltips.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { PlateformeComponent } from './plateforme/plateforme.component';
+import { MethodeComponent } from './methode/methode.component';
 import { TechnologieEducativeComponent } from './technologie-educative/technologie-educative.component';
 
 @NgModule({
@@ -37,6 +38,7 @@ import { TechnologieEducativeComponent } from './technologie-educative/technolog
     AppMenuComponent,
     AppTooltipsComponent,
     PlateformeComponent,
+    MethodeComponent,
     TechnologieEducativeComponent
   ],
 })
