@@ -1,0 +1,103 @@
+<div class="col-lg-8">
+    <mat-card class="cardWithShadow">
+      <mat-card-content class="p-24">
+        <mat-card-title>Gestion des Personnes</mat-card-title>
+        
+        <!-- Formulaire pour ajouter/modifier une personne -->
+        <form [formGroup]="personneForm" (ngSubmit)="onSubmit()">
+          <mat-form-field class="w-100">
+            <mat-label>Nom</mat-label>
+            <input matInput formControlName="nom" placeholder="Entrez le nom" />
+          </mat-form-field>
+  
+          <mat-form-field class="w-100">
+            <mat-label>Âge</mat-label>
+            <input matInput formControlName="age" placeholder="Entrez l'âge" type="number" />
+          </mat-form-field>
+          <mat-form-field class="w-100">
+            <mat-label>date naissance</mat-label>
+            <input matInput formControlName="dateNaissance" placeholder="Entrez date" type="date" />
+          </mat-form-field>
+          <mat-form-field class="w-100">
+            <mat-label>niveau</mat-label>
+            <input matInput formControlName="niveau" placeholder="Entrez niveau" type="text" />
+          </mat-form-field>
+          <mat-form-field class="w-100">
+            <mat-label>Role</mat-label>
+            <mat-select formControlName="role" placeholder="Choisissez un rôle">
+              <mat-option *ngFor="let role of roles" [value]="role">{{ role }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+  
+          <button mat-raised-button color="primary" type="submit" [disabled]="!personneForm.valid">
+            {{ isUpdating ? 'Mettre à jour' : 'Ajouter' }}
+          </button>
+        </form>
+  
+        <!-- Tableau des personnes -->
+        <div class="table-responsive m-t-16">
+          <table mat-table [dataSource]="dataSource" class="w-100">
+            <!-- Colonne Nom -->
+          <!-- Existing columns -->
+<ng-container matColumnDef="nom">
+  <th mat-header-cell *matHeaderCellDef>Nom</th>
+  <td mat-cell *matCellDef="let element">{{ element.nom }}</td>
+</ng-container>
+
+<ng-container matColumnDef="age">
+  <th mat-header-cell *matHeaderCellDef>Âge</th>
+  <td mat-cell *matCellDef="let element">{{ element.age }}</td>
+</ng-container>
+
+<!-- New columns -->
+<ng-container matColumnDef="dateNaissance">
+  <th mat-header-cell *matHeaderCellDef>Date de Naissance</th>
+  <td mat-cell *matCellDef="let element">{{ element.dateNaissance }}</td>
+</ng-container>
+
+<ng-container matColumnDef="niveau">
+  <th mat-header-cell *matHeaderCellDef>Niveau</th>
+  <td mat-cell *matCellDef="let element">{{ element.niveau }}</td>
+</ng-container>
+
+<ng-container matColumnDef="role">
+  <th mat-header-cell *matHeaderCellDef>Role</th>
+  <td mat-cell *matCellDef="let element">{{ element.role }}</td>
+</ng-container>
+
+<ng-container matColumnDef="est_parent_de">
+  <th mat-header-cell *matHeaderCellDef>Est Parent De</th>
+  <td mat-cell *matCellDef="let element">{{ element.nom_fils }}</td>
+</ng-container>
+
+<ng-container matColumnDef="estSupervisePar">
+  <th mat-header-cell *matHeaderCellDef>Est Supervise Par</th>
+  <td mat-cell *matCellDef="let element">{{ element.estSupervisePar }}</td>
+</ng-container>
+
+<!-- Update and Delete columns remain the same -->
+<ng-container matColumnDef="update">
+  <th mat-header-cell *matHeaderCellDef>Modifier</th>
+  <td mat-cell *matCellDef="let element">
+    <button mat-button color="accent" (click)="editPersonne(element.personne)">Modifier</button>
+  </td>
+</ng-container>
+
+<ng-container matColumnDef="delete">
+  <th mat-header-cell *matHeaderCellDef>Supprimer</th>
+  <td mat-cell *matCellDef="let element">
+    <button mat-button color="warn" (click)="deletePersonne(element.personne)">Supprimer</button>
+  </td>
+</ng-container>
+
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+  
+          
+          </table>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

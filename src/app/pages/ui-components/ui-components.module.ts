@@ -44,7 +44,7 @@ import { ActiviteEducativeComponent } from './activite-educative/activite-educat
     
     CoursComponent,
     EvaluationComponent,
-    ActiviteEducativeComponent
+    ActiviteEducativeComponent,
     MethodeComponent,
     TechnologieEducativeComponent
   ],
