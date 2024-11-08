@@ -24,17 +24,17 @@ export const navItems: NavItem[] = [
   },
   {
     displayName: 'Cours',
-    iconName: 'school',
+    iconName: 'book',
     route: '/ui-components/cours',
   },
   {
-    displayName: 'evaluation',
+    displayName: 'Evaluation',
     iconName: 'school',
     route: '/ui-components/evaluation',
   },
   {
-    displayName: 'activite-educative',
-    iconName: 'school',
+    displayName: 'Activite-educative',
+    iconName: 'rosette',
     route: '/ui-components/activite-educative',},
     {
     displayName: 'Methodes',
